@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security.xsd
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <import resource="classpath*:sym_authentication-spring-context.xml"/>
+
+    <mvc:annotation-driven />
+
+    <mvc:interceptors>
+        <bean id="userInfoInterceptor" class="org.mitre.openid.connect.web.UserInfoInterceptor" />
+    </mvc:interceptors>
+
+    <context:component-scan base-package="net.symbiosis.authentication"/>
+
+    <context:annotation-config/>
+    <!-- Enables the Spring MVC @Controller programming model -->
+
+
+    <security:global-method-security pre-post-annotations="enabled" proxy-target-class="true" authentication-manager-ref="authenticationManager" />
+
+    <security:http auto-config="false" use-expressions="true"
+                   disable-url-rewriting="true" entry-point-ref="authenticationEntryPoint"
+                   pattern="/**">
+
+        <security:custom-filter before="PRE_AUTH_FILTER" ref="openIdConnectAuthenticationFilter" />
+
+        <security:logout />
+
+    </security:http>
+
+    <bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <constructor-arg name="loginFormUrl" value="/openid_connect_login" />
+    </bean>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider ref="openIdConnectAuthenticationProvider" />
+    </security:authentication-manager>
+
+    <bean id="openIdConnectAuthenticationProvider" class="org.mitre.openid.connect.client.OIDCAuthenticationProvider" />
+
+    <bean id="openIdConnectAuthenticationFilter" class="org.mitre.openid.connect.client.OIDCAuthenticationFilter">
+        <property name="authenticationManager" ref="authenticationManager" />
+
+        <property name="issuerService" ref="hybridIssuerService" />
+        <property name="serverConfigurationService" ref="dynamicServerConfigurationService" />
+        <property name="clientConfigurationService" ref="staticClientConfigurationService" />
+        <property name="authRequestOptionsService" ref="staticAuthRequestOptionsService" />
+        <property name="authRequestUrlBuilder" ref="plainAuthRequestUrlBuilder" />
+
+    </bean>
+
+    <bean class="org.mitre.openid.connect.client.service.impl.HybridIssuerService" id="hybridIssuerService">
+        <property name="loginPageUrl" value="login" />
+        <property name="forceHttps" value="false" />
+    </bean>
+
+    <bean class="org.mitre.openid.connect.client.service.impl.DynamicServerConfigurationService" id="dynamicServerConfigurationService" />
+
+    <bean class="org.mitre.openid.connect.client.service.impl.StaticClientConfigurationService" id="staticClientConfigurationService">
+        <property name="clients">
+            <map>
+                <entry key="https://connect.openathens.net">
+                    <bean class="org.mitre.oauth2.model.RegisteredClient">
+                        <property name="clientId" value="clientId>"/>
+                        <property name="clientSecret" value="clientSecret"/>
+                        <property name="scope">
+                            <set value-type="java.lang.String">
+                                <value>openid</value>
+                            </set>
+                        </property>
+                        <property name="tokenEndpointAuthMethod" value="SECRET_BASIC" />
+                        <property name="redirectUris">
+                            <set>
+                                <value>http://localhost:8080/openid_connect_login</value>
+                            </set>
+                        </property>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean class="org.mitre.openid.connect.client.service.impl.StaticAuthRequestOptionsService" id="staticAuthRequestOptionsService" />
+
+    <bean class="org.mitre.openid.connect.client.service.impl.PlainAuthRequestUrlBuilder" id="plainAuthRequestUrlBuilder" />
+
+    <bean id="validatorCache" class="org.mitre.jwt.signer.service.impl.JWKSetCacheService" />
+
+</beans>

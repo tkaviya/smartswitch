@@ -1,0 +1,102 @@
+<!--<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"-->
+<!--             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence-->
+<!--             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"-->
+<!--             version="2.1">-->
+<!--    <persistence-unit name="testSymPersistence" transaction-type="RESOURCE_LOCAL">-->
+<!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+
+<!--        <class>sym_deposit_type</class>-->
+<!--        <class>sym_distribution_channel</class>-->
+
+<!--        <class>sym_device_phone</class>-->
+<!--        <class>sym_device_pos_machine</class>-->
+
+<!--        <class>sym_cashout_transaction</class>-->
+<!--        <class>sym_import_batch</class>-->
+<!--        <class>sym_incoming_payment</class>-->
+<!--        <class>sym_integration_log</class>-->
+<!--        <class>sym_integration_log_tracker</class>-->
+<!--        <class>sym_request_response_log</class>-->
+<!--        <class>sym_session</class>-->
+<!--        <class>sym_swipe_transaction</class>-->
+<!--        <class>sym_wallet_transfer</class>-->
+<!--        <class>sym_wallet_transfer</class>-->
+<!--        <class>sym_wallet_transaction</class>-->
+
+<!--        <class>sym_pin_import_config</class>-->
+<!--        <class>sym_pinbased_voucher</class>-->
+<!--        <class>sym_service_provider</class>-->
+<!--        <class>sym_voucher</class>-->
+<!--        <class>sym_voucher_provider</class>-->
+<!--        <class>sym_voucher_provider_payment</class>-->
+<!--        <class>sym_voucher_purchase</class>-->
+
+<!--        <class>sym_cashout_account</class>-->
+<!--        <class>sym_wallet</class>-->
+<!--        <class>sym_wallet_group</class>-->
+<!--        <class>sym_wallet_group_voucher_discount</class>-->
+<!--        <class>sym_wallet_group_transfer_charge</class>-->
+
+<!--        <class>sym_auth_group_role</class>-->
+<!--        <class>sym_auth_user</class>-->
+<!--        <class>sym_company</class>-->
+<!--        <class>sym_user</class>-->
+<!--        <class>sym_user_preference</class>-->
+
+<!--        <class>sym_auth_group</class>-->
+<!--        <class>sym_channel</class>-->
+<!--        <class>sym_config</class>-->
+<!--        <class>sym_country</class>-->
+<!--        <class>sym_currency</class>-->
+<!--        <class>sym_deposit_type</class>-->
+<!--        <class>sym_distribution_channel</class>-->
+<!--        <class>sym_event_type</class>-->
+<!--        <class>sym_financial_institution</class>-->
+<!--        <class>sym_financial_institution_type</class>-->
+<!--        <class>sym_language</class>-->
+<!--        <class>sym_preference</class>-->
+<!--        <class>sym_response_code</class>-->
+<!--        <class>sym_response_mapping</class>-->
+<!--        <class>sym_role</class>-->
+<!--        <class>sym_voucher_status</class>-->
+<!--        <class>sym_voucher_type</class>-->
+
+<!--        <class>sym_complex_enum</class>-->
+<!--        <class>sym_device</class>-->
+<!--        <class>sym_entity</class>-->
+<!--        <class>sym_enum_entity</class>-->
+
+
+<!--        <shared-cache-mode>DISABLE_SELECTIVE</shared-cache-mode>-->
+
+<!--        <properties>-->
+<!--            <property name="hibernate.cache.use_second_level_cache" value="true" />-->
+<!--            <property name="hibernate.cache.use_query_cache" value="true" />-->
+<!--            <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.jbc2.JndiMultiplexedJBossCacheRegionFactory"/>-->
+<!--            <property name="hibernate.cache.region.jbc2.cachefactory" value="java:CacheManager"/>-->
+<!--            <property name="hibernate.cache.region.jbc2.cfg.entity" value="mvcc-entity"/>-->
+<!--            <property name="hibernate.cache.region.jbc2.cfg.collection" value="mvcc-entity"/>-->
+
+<!--            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>-->
+<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>-->
+<!--            <property name="hibernate.hbm2ddl.auto" value="create"/>-->
+<!--            <property name="hibernate.show_sql" value="false"/>-->
+<!--            <property name="hibernate.format_sql" value="true"/>-->
+<!--            <property name="hibernate.autocommit" value="true"/>-->
+<!--            <property name="hibernate.characterEncoding" value="UTF-8"/>-->
+<!--            <property name="hibernate.use_sql_comments" value="true"/>-->
+<!--            <property name="hibernate.connection.autoReconnect" value="true"/>-->
+<!--            <property name="hibernate.connection.pool_size" value="10" />-->
+
+<!--            &lt;!&ndash;<property name="hibernate.c3p0.min_size">5</property>&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="hibernate.c3p0.max_size">20</property>&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="hibernate.c3p0.timeout">0</property>&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="hibernate.c3p0.max_statements">50</property>&ndash;&gt;-->
+<!--            &lt;!&ndash;<property name="hibernate.c3p0.idle_test_period">0</property>&ndash;&gt;-->
+
+<!--        </properties>-->
+
+<!--    </persistence-unit>-->
+
+<!--</persistence>-->

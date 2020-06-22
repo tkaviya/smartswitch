@@ -1,0 +1,7 @@
+rootProject.name = 'symbiosis'
+
+include ':sym_core_lib'
+include ':sym_persistence'
+include ':sym_common'
+//include ':sym_authentication'
+include ':sym_notification'

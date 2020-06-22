@@ -1,0 +1,68 @@
+description = 'Symbiosis Authentication'
+
+jar { baseName = 'authentication' }
+
+apply plugin: 'war'
+apply plugin: 'idea'
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main.compileClasspath += configurations.provided
+    test.compileClasspath += configurations.provided
+    test.runtimeClasspath += configurations.provided
+}
+
+idea { module { scopes.PROVIDED.plus += [ configurations.provided] } }
+
+dependencies {
+
+    compileOnly libraries.lombok
+    annotationProcessor libraries.lombok
+    
+    provided project(':sym_core_lib')
+    provided project(':sym_persistence')
+    provided project(':sym_common')
+
+    testCompile project(':sym_core_lib').sourceSets.test.output
+    testCompile project(':sym_persistence').sourceSets.test.output
+    testCompile project(':sym_common').sourceSets.test.output
+
+    compile libraries.spring_webmvc
+    compile libraries.spring_context
+    compile libraries.spring_orm
+    compile libraries.spring_data_jpa
+    compile libraries.spring_security_core
+    
+//	compile libraries.javax_servlet_api
+//	compile libraries.javax_jsp_api
+
+    testCompile libraries.hibernate_core
+    testCompile libraries.jpa_2_1_api
+    testCompile libraries.dom4j
+    testCompile libraries.hibernate_antlr
+    //testCompile libraries.log4j
+    testCompile libraries.testng
+
+    provided libraries.hibernate_core
+    provided libraries.hibernate_validator
+    provided libraries.hibernate_entitymanager
+    compile libraries.mysql_connector
+    compile libraries.commons_logging
+//    compile libraries.hibernate_c3p0
+//    compile libraries.c3p0
+    compile libraries.hibernate_ehcache
+    compile libraries.ehcache
+    
+    compile libraries.google_api_client
+    compile libraries.mitre_id
+
+    testCompile libraries.testng
+    testCompile libraries.jmockit
+    testCompile libraries.spring_test
+    testCompileOnly libraries.lombok
+    testAnnotationProcessor libraries.lombok
+
+}
