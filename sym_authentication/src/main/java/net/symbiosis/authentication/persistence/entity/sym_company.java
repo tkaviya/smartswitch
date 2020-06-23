@@ -22,7 +22,7 @@ import javax.persistence.*;
 @AttributeOverride(name = "id", column = @Column(name = "company_id"))
 @Cacheable(false)
 public class sym_company extends sym_entity<sym_company> {
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String company_name;
     @Column
     private String address_line_1;

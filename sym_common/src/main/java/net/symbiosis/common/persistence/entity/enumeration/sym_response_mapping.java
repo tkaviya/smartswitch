@@ -30,7 +30,7 @@ public class sym_response_mapping extends sym_entity<sym_response_mapping> {
     private Long response_code_id;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, name = "mapped_response_code_id")
     private sym_response_code mapped_response_code;
 
     @Column(nullable = false)

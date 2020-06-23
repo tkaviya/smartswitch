@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 import static java.lang.String.format;
 import static java.util.Collections.singletonList;
-import static net.symbiosis.authentication.AuthenticationHelper.getEmailTemplate;
+import static net.symbiosis.authentication.helper.AuthenticationHelper.getEmailTemplate;
 import static net.symbiosis.authentication.provider.SymbiosisAuthenticator.registerUser;
 import static net.symbiosis.common.configuration.NetworkUtilities.sendEmail;
 import static net.symbiosis.common.mail.EMailer.CONTENT_TYPE_HTML;

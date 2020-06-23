@@ -95,10 +95,10 @@ tasks.withType(JavaCompile) {
 
 configurations {
 	compile.exclude (group: 'com.sun.jersey', module: 'jersey-core')
-//	compile.exclude (module: 'jersey-server')
-//	compile.exclude (module: 'jersey-servlet')
-//	compile.exclude (module: 'jersey-spring')
-//	compile.exclude (module: 'jersey-multipart')
+	compile.exclude (module: 'jersey-server')
+	compile.exclude (module: 'jersey-servlet')
+	compile.exclude (module: 'jersey-spring')
+	compile.exclude (module: 'jersey-multipart')
 	compile.exclude (module: 'javax.servlet')
 	compile.exclude (module: 'commons-logging')
 	compile.exclude (module: 'servlet-api')

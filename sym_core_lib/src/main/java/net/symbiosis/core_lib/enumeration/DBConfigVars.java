@@ -64,12 +64,6 @@ public class DBConfigVars {
     public static final String CONFIG_DEFAULT_CURRENCY_SYMBOL = "default_currency_symbol";
     public static final String CONFIG_DEFAULT_LANGUAGE = "default_language";
 
-    //OPENID SETTINGS
-    public static final String CONFIG_GOOGLE_OPENID_BASE_URL = "google_openid_base_url";
-    public static final String CONFIG_GOOGLE_OPENID_CLIENT_ID = "google_openid_client_id";
-    public static final String CONFIG_GOOGLE_OPENID_API_KEY = "google_openid_api_key";
-    public static final String CONFIG_GOOGLE_OPENID_REDIRECT_URL = "google_openid_redirect_url";
-
     //REGISTRATION SETTINGS
     public static final String CONFIG_DEFAULT_WEB_AUTH_GROUP = "default_web_auth_group";
     public static final String CONFIG_DEFAULT_POS_MACHINE_AUTH_GROUP = "default_web_auth_group";
@@ -133,5 +127,11 @@ public class DBConfigVars {
     public static final String CONFIG_MTNMOMO_API_KEY = "mtnmomo_gh_api_key";
     public static final String CONFIG_MTNMOMO_GH_CASH_IN_CHECK_INTERVAL = "mtnmomo_gh_cash_in_check_interval";
     public static final String CONFIG_MTNMOMO_GH_CASH_IN_CHECK_COUNT = "mtnmomo_gh_cash_in_check_count";
+
+//    //GOOGLE OPENID SETTINGS
+//    public static final String CONFIG_GOOGLE_OPENID_BASE_URL = "google_openid_base_url";
+//    public static final String CONFIG_GOOGLE_OPENID_CLIENT_ID = "google_openid_client_id";
+//    public static final String CONFIG_GOOGLE_OPENID_API_KEY = "google_openid_api_key";
+//    public static final String CONFIG_GOOGLE_OPENID_REDIRECT_URL = "google_openid_redirect_url";
 
 }

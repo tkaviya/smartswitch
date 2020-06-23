@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 
 /***************************************************************************
@@ -34,6 +35,7 @@ import java.util.Properties;
 @ComponentScan({ "net.symbiosis" })
 @EnableJpaRepositories(basePackages = "net.symbiosis")
 public class PersistenceJPAConfig {
+	private final Logger logger = Logger.getLogger(this.getClass().getSimpleName());
 	private final Environment env;
 
 	public PersistenceJPAConfig(Environment env) {
@@ -49,11 +51,11 @@ public class PersistenceJPAConfig {
 		final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
 		entityManagerFactoryBean.setJpaProperties(additionalProperties());
-
 		return entityManagerFactoryBean;
 	}
 
 	private Properties additionalProperties() {
+		logger.info("Configuring datasource properties...");
 		final Properties hibernateProperties = new Properties();
 		hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
 		hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
@@ -68,16 +70,22 @@ public class PersistenceJPAConfig {
 		hibernateProperties.setProperty("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
 		hibernateProperties.setProperty("hibernate.use_sql_comments", env.getProperty("hibernate.use_sql_comments"));
 		// hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
+		var keys = hibernateProperties.keys();
+		while (keys.hasMoreElements()) {
+			var key = keys.nextElement();
+			logger.info(key + " : " + hibernateProperties.get(key));
+		}
 		return hibernateProperties;
 	}
 
 	@Bean
 	public DataSource dataSource() {
+		logger.info("Configuring datasource with URL " + env.getProperty("spring.datasource.url"));
 		final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-		dataSource.setUrl(env.getProperty("jdbc.url"));
-		dataSource.setUsername(env.getProperty("jdbc.user"));
-		dataSource.setPassword(env.getProperty("jdbc.pass"));
+		dataSource.setUrl(env.getProperty("spring.datasource.url"));
+		dataSource.setUsername(env.getProperty("spring.datasource.username"));
+		dataSource.setPassword(env.getProperty("spring.datasource.password"));
+		dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
 		return dataSource;
 	}
 

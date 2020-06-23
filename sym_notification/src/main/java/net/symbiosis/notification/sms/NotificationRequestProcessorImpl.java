@@ -230,15 +230,15 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
                 }
                 notification.save();
 
-            } catch (Exception exception) {
-                String responseMessage = "Send SMS failed! ".concat(exception.getMessage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                String responseMessage = "Send SMS failed! ".concat(ex.getMessage());
                 logger.severe(responseMessage);
                 if (notification.getNotification_status().equals(fromEnum(SENDING))) {
                     notification.setNotification_status(fromEnum(FAILED)).save();
                 } else {
                     notification.save();
                 }
-
                 logResponse(systemUser, log, GENERAL_ERROR, responseMessage);
             }
         });

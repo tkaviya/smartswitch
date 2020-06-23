@@ -1,5 +1,7 @@
-package net.symbiosis.common.utilities;
+package net.symbiosis.common.utilities.impl;
 
+import net.symbiosis.common.utilities.SymTransformer;
+import net.symbiosis.common.utilities.service.TypeTransformer;
 import net.symbiosis.core_lib.structure.Pair;
 
 import java.math.BigDecimal;

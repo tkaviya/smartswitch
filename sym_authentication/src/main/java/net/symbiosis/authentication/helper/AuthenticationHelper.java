@@ -1,4 +1,4 @@
-package net.symbiosis.authentication;
+package net.symbiosis.authentication.helper;
 
 import net.symbiosis.authentication.persistence.entity.sym_user;
 import net.symbiosis.common.persistence.entity.enumeration.sym_channel;

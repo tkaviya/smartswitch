@@ -7,6 +7,8 @@ insert ignore into sym_config(config_id,is_enabled,config_name,config_value,conf
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (6,1,'thread_max_pool_size','50','Maximum number threads available');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (7,1,'mutex_lock_wait_time','10000','Milliseconds to wait for mutex');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (8,1,'mutex_lock_wait_interval','1000','Milliseconds between checking mutex lock');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (9,1,'api_sync_timeout','20','Number of seconds before timing out a synchronous network communication');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (10,1,'api_async_timeout','90','Number of seconds before timing out an asynchronous network communication');
 #sms settings
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (20,1,'sms_enable','true','Are all SMSs enabled?');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (21,1,'sms_max_length','160','Maximum length of SMSs to allow');
@@ -101,6 +103,11 @@ insert ignore into sym_config(config_id,is_enabled,config_name,config_value,conf
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (369,1,'mtnmomo_gh_api_key','0118e1615ef842cb99d3fa9aee3e2951','API Key for MTN MoMo collections');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (370,1,'mtnmomo_gh_cash_in_check_interval','30000','Amount of time (milliseconds) between checking whether cash in transaction has completed');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (371,1,'mtnmomo_gh_cash_in_check_count','5','Number of times to check whether cash in transaction has completed');
+#google openid settings
+# insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (400,1,'google_openid_base_url','','');
+# insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (401,1,'google_openid_client_id','','');
+# insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (402,1,'google_openid_api_key','','');
+# insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (403,1,'google_openid_redirect_url','http://localhost:8081/login/oauth2/code/google','');
 
 insert ignore into sym_country(country_id,name,is_enabled,iso_code_2,iso_code_3,dialing_code) values (1,'GHANA',1,'GH','GHA',233);
 insert ignore into sym_country(country_id,name,is_enabled,iso_code_2,iso_code_3,dialing_code) values (2,'ZIMBABWE',0,'ZW','ZWE',263);
@@ -110,12 +117,13 @@ insert ignore into sym_country(country_id,name,is_enabled,iso_code_2,iso_code_3,
 insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (0,'SYSTEM',1,0);
 update sym_channel set channel_id = 0 where name = 'SYSTEM';
 
-insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (1,'DESKTOP',1,0);
-insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (2,'WEB',1,0);
-insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (3,'POS_MACHINE',1,1);
-insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (4,'POS_TILL',1,1);
-insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (5,'USSD',1,1);
-insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (6,'SMART_PHONE',1,1);
+insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (1,'API',1,0);
+insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (2,'DESKTOP',1,0);
+insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (3,'WEB',1,0);
+insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (4,'POS_MACHINE',1,1);
+insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (5,'POS_TILL',1,1);
+insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (6,'USSD',1,1);
+insert ignore into sym_channel(channel_id,name,is_enabled,is_pin_based) values (7,'SMART_PHONE',1,1);
 
 insert ignore into sym_currency(currency_id,currency_name,iso_4217_code,iso_4217_num) values (1,'United States Dollar','USD','840');
 insert ignore into sym_currency(currency_id,currency_name,iso_4217_code,iso_4217_num) values (2,'South African Rand','ZAR','710');
@@ -183,57 +191,57 @@ insert ignore into sym_financial_institution(institution_id,institution_name,sho
 
 insert ignore into sym_language(name,is_enabled) values ('ENGLISH',1);
 
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(1, 'GENERAL_ERROR',1,'A general error occurred');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(-1,'CONFIGURATION_INVALID',1,'Specified configuration is not valid');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(15,'DATA_NOT_FOUND',1,'Data does not exist');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(16,'NOT_SUPPORTED',1,'Not supported');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(1, 'GENERAL_ERROR',1,'A general error occurred');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(-1,'CONFIGURATION_INVALID',1,'Specified configuration is not valid');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(15,'DATA_NOT_FOUND',1,'Data does not exist');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(16,'NOT_SUPPORTED',1,'Not supported');
 
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(2,'INPUT_INCOMPLETE_REQUEST',1,'Incomplete request specified');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(3,'INPUT_INVALID_REQUEST',1,'Invalid request specified');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(4,'INPUT_INVALID_EMAIL',1,'Email provided was not valid');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(5,'INPUT_INVALID_MSISDN',1,'Phone number provided was not valid');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(6,'INPUT_INVALID_FIRST_NAME',1,'First name provided was not valid');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(7,'INPUT_INVALID_LAST_NAME',1,'Last name provided was not valid');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(8,'INPUT_INVALID_USERNAME',1,'Username provided was not valid');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(9,'INPUT_INVALID_PASSWORD',1,'Password provided was not valid');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(10,'INPUT_INVALID_NAME',1,'Name provided was not valid');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(11,'INPUT_INVALID_AMOUNT',1,'Invalid amount specified');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(12,'INPUT_INVALID_WALLET',1,'Invalid wallet specified');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(13,'INPUT_INVALID_CASHIER',1,'Invalid cashier name specified');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(2,'INPUT_INCOMPLETE_REQUEST',1,'Incomplete request specified');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(3,'INPUT_INVALID_REQUEST',1,'Invalid request specified');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(4,'INPUT_INVALID_EMAIL',1,'Email provided was not valid');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(5,'INPUT_INVALID_MSISDN',1,'Phone number provided was not valid');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(6,'INPUT_INVALID_FIRST_NAME',1,'First name provided was not valid');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(7,'INPUT_INVALID_LAST_NAME',1,'Last name provided was not valid');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(8,'INPUT_INVALID_USERNAME',1,'Username provided was not valid');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(9,'INPUT_INVALID_PASSWORD',1,'Password provided was not valid');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(10,'INPUT_INVALID_NAME',1,'Name provided was not valid');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(11,'INPUT_INVALID_AMOUNT',1,'Invalid amount specified');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(12,'INPUT_INVALID_WALLET',1,'Invalid wallet specified');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(13,'INPUT_INVALID_CASHIER',1,'Invalid cashier name specified');
 
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(20,'AUTH_INSUFFICIENT_PRIVILEGES',1,'Insufficient privileges for current operation');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(21,'AUTH_AUTHENTICATION_FAILED',1,'Authentication failed');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(22,'AUTH_INCORRECT_PASSWORD',1,'Password is incorrect');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(23,'AUTH_NON_EXISTENT',1,'Account does not exist');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(20,'AUTH_INSUFFICIENT_PRIVILEGES',1,'Insufficient privileges for current operation');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(21,'AUTH_AUTHENTICATION_FAILED',1,'Authentication failed');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(22,'AUTH_INCORRECT_PASSWORD',1,'Password is incorrect');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(23,'AUTH_NON_EXISTENT',1,'Account does not exist');
 
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(30,'ACC_ACTIVE',1,'Account is active');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(31,'ACC_INACTIVE',1,'Account is inactive');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(32,'ACC_SUSPENDED',1,'Account has been suspended');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(33,'ACC_CLOSED',1,'Account has been closed');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(34,'ACC_PASSWORD_TRIES_EXCEEDED',1,'Password tries exceeded');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(35,'ACC_PASSWORD_EXPIRED',1,'Password expired');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(30,'ACC_ACTIVE',1,'Account is active');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(31,'ACC_INACTIVE',1,'Account is inactive');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(32,'ACC_SUSPENDED',1,'Account has been suspended');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(33,'ACC_CLOSED',1,'Account has been closed');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(34,'ACC_PASSWORD_TRIES_EXCEEDED',1,'Password tries exceeded');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(35,'ACC_PASSWORD_EXPIRED',1,'Password expired');
 
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(40,'CONNECTION_FAILED',1,'Connection failed');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(41,'UNKNOWN_HOST',1,'Unknown host');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(42,'CONNECTION_REFUSED',1,'Connection Refused');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(43,'TIMEOUT',1,'Timeout elapsed before transaction completion');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(40,'CONNECTION_FAILED',1,'Connection failed');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(41,'UNKNOWN_HOST',1,'Unknown host');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(42,'CONNECTION_REFUSED',1,'Connection Refused');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(43,'TIMEOUT',1,'Timeout elapsed before transaction completion');
 
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(51,'INSUFFICIENT_FUNDS',1,'Insufficient funds');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(51,'INSUFFICIENT_FUNDS',1,'Insufficient funds');
 
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(60,'INSUFFICIENT_STOCK',1,'Insufficient stock');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(60,'INSUFFICIENT_STOCK',1,'Insufficient stock');
 
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(80,'EXISTING_DATA_FOUND',1,'Existing data found');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(80,'EXISTING_DATA_FOUND',1,'Existing data found');
 
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(90,'PENDING',1,'Pending');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(90,'PENDING',1,'Pending');
 
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(351,'REGISTRATION_FAILED',1,'Registration Failed');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(352,'PREVIOUS_USERNAME_FOUND',1,'Username has been previously registered');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(353,'PREVIOUS_MSISDN_FOUND',1,'Mobile number has been previously registered');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(354,'PREVIOUS_EMAIL_FOUND',1,'Email has been previously registered');
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(355,'PREVIOUS_REGISTRATION_FOUND',1,'Previous registration found');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(351,'REGISTRATION_FAILED',1,'Registration Failed');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(352,'PREVIOUS_USERNAME_FOUND',1,'Username has been previously registered');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(353,'PREVIOUS_MSISDN_FOUND',1,'Mobile number has been previously registered');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(354,'PREVIOUS_EMAIL_FOUND',1,'Email has been previously registered');
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(355,'PREVIOUS_REGISTRATION_FOUND',1,'Previous registration found');
 
-insert ignore into sym_response_code(id,name,is_enabled,response_message) values(0, 'SUCCESS',1,'Successful');
-update sym_response_code set id = 0 where name = 'SUCCESS';
+insert ignore into sym_response_code(response_code_id,name,is_enabled,response_message) values(0, 'SUCCESS',1,'Successful');
+update sym_response_code set response_code_id = 0 where name = 'SUCCESS';
 
 # GloSeamless response code
 insert ignore into sym_response_mapping(system_id,response_code_id,mapped_response_code_id,mapped_response_message) values ('GloSeamless',1,1,'Pending');

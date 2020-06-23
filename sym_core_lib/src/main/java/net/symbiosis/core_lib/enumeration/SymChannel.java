@@ -1,7 +1,7 @@
 package net.symbiosis.core_lib.enumeration;
 
 public enum SymChannel {
-    SYSTEM, DESKTOP, WEB, POS_MACHINE, POS_TILL, USSD, SMART_PHONE;
+    SYSTEM, API, DESKTOP, WEB, POS_MACHINE, POS_TILL, USSD, SMART_PHONE;
 
     public static SymChannel fromString(String channel) {
         for (SymChannel channelEnum : SymChannel.values()) {

@@ -1,41 +1,12 @@
 package net.symbiosis.authentication.provider;
 
-import net.symbiosis.authentication.persistence.entity.*;
-import net.symbiosis.authentication.persistence.entity.device.sym_device_phone;
-import net.symbiosis.common.persistence.entity.enumeration.sym_auth_group;
 import net.symbiosis.common.persistence.entity.enumeration.sym_channel;
 import net.symbiosis.common.persistence.log.sym_request_response_log;
-import net.symbiosis.core_lib.response.SymResponseObject;
-import net.symbiosis.core_lib.structure.Pair;
-import net.symbiosis.core_lib.utilities.CommonUtilities;
 
-import java.io.File;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
 import java.util.logging.Logger;
 
-import static java.lang.Long.parseLong;
-import static java.lang.String.format;
-import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
-import static net.symbiosis.authentication.AuthenticationHelper.getEmailTemplate;
-import static net.symbiosis.authentication.provider.SymbiosisAuthenticator.registerUser;
-import static net.symbiosis.common.configuration.NetworkUtilities.sendEmail;
-import static net.symbiosis.common.contract.api.NotificationAPI.sendSMS;
-import static net.symbiosis.common.mail.EMailer.CONTENT_TYPE_HTML;
-import static net.symbiosis.common.persistence.dao.implementation.SymConfigDaoImpl.getConfig;
-import static net.symbiosis.common.persistence.helper.SymEnumHelper.fromEnum;
-import static net.symbiosis.core_lib.enumeration.DBConfigVars.*;
-import static net.symbiosis.core_lib.enumeration.DBConfigVars.CONFIG_SYSTEM_USER_ID;
-import static net.symbiosis.core_lib.enumeration.SymChannel.SMART_PHONE;
-import static net.symbiosis.core_lib.enumeration.SymResponseCode.SUCCESS;
-import static net.symbiosis.persistence.dao.EnumEntityRepoManager.findByName;
-import static net.symbiosis.persistence.helper.DaoManager.getEntityManagerRepo;
 
 /***************************************************************************
  *                                                                         *

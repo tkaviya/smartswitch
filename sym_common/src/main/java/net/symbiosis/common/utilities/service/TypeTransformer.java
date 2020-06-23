@@ -1,4 +1,4 @@
-package net.symbiosis.common.utilities;
+package net.symbiosis.common.utilities.service;
 
 
 @FunctionalInterface

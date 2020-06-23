@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.3.1.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
 }
 
 description = 'Symbiosis Notification'
@@ -9,7 +10,6 @@ jar { baseName = 'notification' }
 
 apply plugin: 'war'
 apply plugin: 'idea'
-
 
 configurations {
 	provided
@@ -36,33 +36,19 @@ dependencies {
     testCompile project(':sym_persistence').sourceSets.test.output
     testCompile project(':sym_common').sourceSets.test.output
 
-//	implementation libraries.boot_starter_web
-//	implementation libraries.tomcat_jasper
-	
-	compile libraries.boot_starter_web
-//	compile libraries.spring_webmvc
-//	compile libraries.spring_context
-
-//	compile libraries.javax_servlet_api
-//	compile libraries.javax_jsp_api
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.springframework.boot:spring-boot-starter-web' // use tomcat
+//	implementation ('org.springframework.boot:spring-boot-starter-web') { // use wildfly
+//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+//    }
+	compile 'org.springframework.boot:spring-boot-starter-actuator'
+	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compile 'javax.servlet:javax.servlet-api'
+	compile 'mysql:mysql-connector-java'
 
 	compile libraries.swagger2
 	compile libraries.swagger_ui
-	compile libraries.swagger_jaxrs
-
 	compile libraries.nexmo
-
-	compile libraries.hibernate_core
-	compile libraries.hibernate_validator
-	compile libraries.hibernate_entitymanager
-	compile libraries.spring_orm
-	compile libraries.spring_data_jpa
-	compile libraries.hibernate_ehcache
-	compile libraries.mysql_connector
-	compile libraries.commons_logging
-//	compile libraries.hibernate_c3p0
-//	compile libraries.c3p0
-	compile libraries.ehcache
 
 	testCompile libraries.testng
 	testCompile libraries.jmockit

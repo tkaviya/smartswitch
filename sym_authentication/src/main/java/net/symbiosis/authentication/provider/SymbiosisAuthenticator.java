@@ -1,6 +1,6 @@
 package net.symbiosis.authentication.provider;
 
-import net.symbiosis.authentication.AuthenticationHelper;
+import net.symbiosis.authentication.helper.AuthenticationHelper;
 import net.symbiosis.authentication.persistence.entity.sym_auth_user;
 import net.symbiosis.authentication.persistence.entity.sym_session;
 import net.symbiosis.authentication.persistence.entity.sym_user;
@@ -21,7 +21,7 @@ import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 import static java.lang.String.format;
 import static java.util.Arrays.asList;
-import static net.symbiosis.authentication.AuthenticationHelper.validateMandatoryChannelData;
+import static net.symbiosis.authentication.helper.AuthenticationHelper.validateMandatoryChannelData;
 import static net.symbiosis.common.contract.api.NotificationAPI.sendSMS;
 import static net.symbiosis.common.persistence.dao.implementation.SymConfigDaoImpl.getConfig;
 import static net.symbiosis.common.persistence.helper.SymEnumHelper.fromEnum;
