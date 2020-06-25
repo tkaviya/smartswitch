@@ -1,5 +1,10 @@
 package net.symbiosis.common.contract.symbiosis;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,9 +17,11 @@ import java.util.Date;
  * *
  ***************************************************************************/
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter @Setter
 @XmlRootElement
 public class SymDeviceUser implements Serializable {
-
     protected String company;
     protected Long walletId;
     protected String group;
@@ -26,54 +33,6 @@ public class SymDeviceUser implements Serializable {
         this.group = group;
         this.authToken = authToken;
         this.lastLoginDate = lastLoginDate;
-        this.deviceVersionId = deviceVersionId;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
-    public Long getWalletId() {
-        return walletId;
-    }
-
-    public void setWalletId(Long walletId) {
-        this.walletId = walletId;
-    }
-
-    public String getGroup() {
-        return group;
-    }
-
-    public void setGroup(String group) {
-        this.group = group;
-    }
-
-    public String getAuthToken() {
-        return authToken;
-    }
-
-    public void setAuthToken(String authToken) {
-        this.authToken = authToken;
-    }
-
-    public Date getLastLoginDate() {
-        return lastLoginDate;
-    }
-
-    public void setLastLoginDate(Date lastLoginDate) {
-        this.lastLoginDate = lastLoginDate;
-    }
-
-    public String getDeviceVersionId() {
-        return deviceVersionId;
-    }
-
-    public void setDeviceVersionId(String deviceVersionId) {
         this.deviceVersionId = deviceVersionId;
     }
 }

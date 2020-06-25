@@ -7,7 +7,6 @@ package net.symbiosis.authentication.provider;
  *																		  *
  *************************************************************************/
 
-import net.symbiosis.authentication.persistence.entity.device.sym_device_phone;
 import net.symbiosis.authentication.persistence.entity.*;
 import net.symbiosis.common.persistence.entity.enumeration.sym_auth_group;
 import net.symbiosis.common.persistence.entity.enumeration.sym_channel;

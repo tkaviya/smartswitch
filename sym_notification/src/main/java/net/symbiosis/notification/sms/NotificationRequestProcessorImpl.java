@@ -6,7 +6,6 @@ import com.nexmo.client.sms.SmsSubmissionResponseMessage;
 import com.nexmo.client.sms.messages.TextMessage;
 import net.symbiosis.common.configuration.ThreadPoolManager;
 import net.symbiosis.common.contract.SymResponse;
-import net.symbiosis.common.contract.api.AuthenticationAPI;
 import net.symbiosis.common.contract.symbiosis.SymSystemUser;
 import net.symbiosis.common.persistence.entity.enumeration.sym_distribution_channel;
 import net.symbiosis.common.persistence.log.sym_request_response_log;
@@ -47,16 +46,11 @@ import static net.symbiosis.persistence.helper.DaoManager.getEntityManagerRepo;
 public class NotificationRequestProcessorImpl implements NotificationRequestProcessor, RequestProcessor {
 
     private static final Logger logger = Logger.getLogger(NotificationRequestProcessorImpl.class.getSimpleName());
-    private static NotificationRequestProcessor instance = null;
-
-    public NotificationRequestProcessorImpl() {
-        instance = this;
-    }
 
     @Override
-    public SymResponse sendSMS(String authToken, String channel, String msisdn, String message) {
+    public SymResponse sendSMS(SymSystemUser systemUser, String channel, String msisdn, String message) {
 
-        logger.info(format("Got request to send SMS by user %s:%s to %s. Message: \"%s\"", authToken, channel, msisdn, message));
+        logger.info(format("Got request to send SMS from %s:%s to %s. Message: \"%s\"", systemUser.getUsername(), channel, msisdn, message));
 
         sym_distribution_channel distributionChannel = fromEnum(SymDistributionChannel.SMS);
         if (!distributionChannel.getIs_enabled()) {
@@ -64,7 +58,7 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
             return new SymResponse(NOT_SUPPORTED);
         }
 
-        String incomingRequest = format("authUserId=%s|channel=%s|msisdn=%s|message=%s", authToken, channel, msisdn, message);
+        String incomingRequest = format("authUserId=%s|channel=%s|msisdn=%s|message=%s", systemUser.getAuthUserId(), channel, msisdn, message);
 
         //validate channel
         var channelResponse = validateChannel(channel);
@@ -75,19 +69,6 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
         }
 
         var log = new sym_request_response_log(channelResponse.getResponseObject(), fromEnum(SMS_NOTIFICATION), incomingRequest);
-
-        //validate auth user
-        var authUserResponse = AuthenticationAPI.validateAuth(authToken);
-        if (!authUserResponse.getResponseCode().equals(SUCCESS)) {
-            String responseMessage = format("Send SMS failed! %s", authUserResponse.getMessage());
-            logger.warning(responseMessage);
-            logResponse(authUserResponse.getResponseObject().getAuthUserId(),
-                authUserResponse.getResponseObject().getUserId(),
-                log, authUserResponse.getResponseCode(), responseMessage);
-            return new SymResponse(authUserResponse.getResponseCode());
-        }
-
-        var authUser = authUserResponse.getResponseObject();
 
         //validate phone number
         final String phoneNumber = formatFullMsisdn(msisdn, getConfig(CONFIG_DEFAULT_COUNTRY_CODE));
@@ -103,25 +84,22 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
         if (message.length() > maxLength) {
             String responseMessage = format("Send SMS failed! Message length is greater than %s ", maxLength);
             logger.warning(responseMessage);
-            logResponse(authUserResponse.getResponseObject().getAuthUserId(),
-                    authUserResponse.getResponseObject().getUserId(),
-                    log, INPUT_INVALID_REQUEST, responseMessage);
+            logResponse(systemUser.getAuthUserId(), systemUser.getAuthUserId(), log, INPUT_INVALID_REQUEST, responseMessage);
             return new SymResponse(INPUT_INVALID_REQUEST);
         }
 
-        sym_notification notification = new sym_notification(
-            authUserResponse.getResponseObject().getAuthUserId(), phoneNumber, fromEnum(SMS),
+        sym_notification notification = new sym_notification(systemUser.getAuthUserId(), phoneNumber, fromEnum(SMS),
             null, fromEnum(SENDING), new Date(), message, null
         ).save();
 
-        submitVonageSMS(notification, authUser, log);
+        submitVonageSMS(notification, systemUser, log);
 
         return new SymResponse(SUCCESS);
     }
 
     @Override
-    public SymResponse resendSMS(String authToken, String channel, Long notificationId) {
-        logger.info(format("Got request to resend SMS %s by user %s:%s", notificationId, authToken, channel));
+    public SymResponse resendSMS(SymSystemUser systemUser, String channel, Long notificationId) {
+        logger.info(format("Got request to resend SMS %s by user %s:%s", notificationId, systemUser.getUsername(), channel));
 
         sym_distribution_channel distributionChannel = fromEnum(SymDistributionChannel.SMS);
         if (!distributionChannel.getIs_enabled()) {
@@ -129,7 +107,7 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
             return new SymResponse(NOT_SUPPORTED);
         }
 
-        String incomingRequest = format("authUserId=%s|channel=%s|notificationId=%s", authToken, channel, notificationId);
+        String incomingRequest = format("authUserId=%s|channel=%s|notificationId=%s", systemUser.getAuthUserId(), channel, notificationId);
 
         //validate channel
         var channelResponse = validateChannel(channel);
@@ -148,23 +126,6 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
             return new SymResponse(channelResponse.getResponseCode());
         }
 
-        //validate auth user
-        var authUserResponse = AuthenticationAPI.validateAuth(authToken);
-        if (!authUserResponse.getResponseCode().equals(SUCCESS)) {
-            String responseMessage = format("Send SMS failed! %s", authUserResponse.getMessage());
-            logger.warning(responseMessage);
-            logResponse(authUserResponse.getResponseObject().getAuthUserId(),
-                    authUserResponse.getResponseObject().getUserId(),
-                    log, authUserResponse.getResponseCode(), responseMessage);
-            return new SymResponse(authUserResponse.getResponseCode());
-        }
-
-        submitVonageSMS(notification, authUserResponse.getResponseObject(), log);
-        return new SymResponse(SUCCESS);
-    }
-
-    //    @Override
-    public static SymResponse resendSMS(sym_notification notification, SymSystemUser systemUser, sym_request_response_log log) {
         submitVonageSMS(notification, systemUser, log);
         return new SymResponse(SUCCESS);
     }

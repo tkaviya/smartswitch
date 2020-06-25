@@ -1,6 +1,7 @@
 package net.symbiosis.notification.api.service;
 
 import net.symbiosis.common.contract.SymResponse;
+import net.symbiosis.common.contract.symbiosis.SymSystemUser;
 
 /***************************************************************************
  *                                                                         *
@@ -12,6 +13,6 @@ import net.symbiosis.common.contract.SymResponse;
  ***************************************************************************/
 
 public interface NotificationRequestProcessor {
-	SymResponse sendSMS(String authToken, String channel, String msisdn, String message);
-	SymResponse resendSMS(String authToken, String channel, Long notificationId);
+	SymResponse sendSMS(SymSystemUser systemUser, String channel, String msisdn, String message);
+	SymResponse resendSMS(SymSystemUser systemUser, String channel, Long notificationId);
 }

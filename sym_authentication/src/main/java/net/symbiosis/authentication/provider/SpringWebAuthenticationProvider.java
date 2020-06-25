@@ -6,8 +6,8 @@ package net.symbiosis.authentication.provider;
  * *************************************************************************
  */
 
-import net.symbiosis.authentication.persistence.entity.sym_auth_group_role;
 import net.symbiosis.common.persistence.entity.enumeration.sym_auth_group;
+import net.symbiosis.common.persistence.entity.enumeration.sym_auth_group_role;
 import net.symbiosis.common.persistence.log.sym_request_response_log;
 import net.symbiosis.core_lib.structure.Pair;
 import org.springframework.security.core.GrantedAuthority;
@@ -38,14 +38,16 @@ public class SpringWebAuthenticationProvider extends WebAuthenticationProvider {
             return null;
         }
 
+        boolean accActive = symAuthUser.getUser().getUser_status().equals(fromEnum(ACC_ACTIVE));
+
         return new User(
-                symAuthUser.getUser().getUsername(),
-                symAuthUser.getUser().getPassword(),
-                symAuthUser.getUser().getUser_status().equals(fromEnum(ACC_ACTIVE)), //account enabled
-                symAuthUser.getUser().getUser_status().equals(fromEnum(ACC_ACTIVE)), //account non expired
-                symAuthUser.getUser().getUser_status().equals(fromEnum(ACC_ACTIVE)), //credentials non expired
-                symAuthUser.getUser().getUser_status().equals(fromEnum(ACC_ACTIVE)), //account non locked
-                getAuthorities(symAuthUser.getAuth_group().getName())
+            symAuthUser.getUser().getUsername(),
+            symAuthUser.getUser().getPassword(),
+            accActive, //account enabled
+            accActive, //account non expired
+            accActive, //credentials non expired
+            accActive, //account non locked
+            getAuthorities(symAuthUser.getAuth_group().getName())
         );
     }
 

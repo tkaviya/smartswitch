@@ -37,20 +37,21 @@ dependencies {
     testCompile project(':sym_common').sourceSets.test.output
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web' // use tomcat
 //	implementation ('org.springframework.boot:spring-boot-starter-web') { // use wildfly
 //        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
 //    }
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-    compile 'org.springframework.boot:spring-boot-starter-oauth2-client'
+//    compile 'org.springframework.boot:spring-boot-starter-oauth2-client'
     compile 'javax.servlet:javax.servlet-api'
     compile 'mysql:mysql-connector-java'
 
     compile libraries.swagger2
     compile libraries.swagger_ui
-    compile libraries.google_api_client
-    compile libraries.mitre_id
+//    compile libraries.google_api_client
+//    compile libraries.mitre_id
 
     testCompile libraries.testng
     testCompile libraries.jmockit

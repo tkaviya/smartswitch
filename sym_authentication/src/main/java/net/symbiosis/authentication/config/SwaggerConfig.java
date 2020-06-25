@@ -37,7 +37,7 @@ public class SwaggerConfig {
 	private ApiInfo apiInfo() {
 		return new ApiInfo(
 			"Symbiosis Authentication API",
-			"API for sending SMS & Email notifications",
+			"API for sending authentication",
 			"1.0.0",
 			"https://www.empowerttl.com/tos",
 			new Contact("Tsungai Kaviya", "https://www.empowerttl.com", "tkaviya@empowertelecoms.com"),

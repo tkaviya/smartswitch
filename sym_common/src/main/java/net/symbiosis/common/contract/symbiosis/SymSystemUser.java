@@ -1,5 +1,11 @@
 package net.symbiosis.common.contract.symbiosis;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import net.symbiosis.core_lib.interfaces.PrintableStringClass;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,8 +18,11 @@ import java.util.Date;
  * *
  ***************************************************************************/
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter @Setter
 @XmlRootElement
-public class SymSystemUser implements Serializable {
+public class SymSystemUser implements Serializable, PrintableStringClass {
 
     protected Long sessionId;
     protected Long authUserId;
@@ -36,184 +45,8 @@ public class SymSystemUser implements Serializable {
     protected String language;
     protected Date dateOfBirth;
 
-    public SymSystemUser() {
-    }
-
-    public SymSystemUser(Long sessionId, Long authUserId, Long userId, Long walletId, String firstName, String lastName,
-                         String username, String email, String msisdn, String phoneNumber, String companyName, Double walletBalance,
-                         String group, String deviceId, String authToken, Date lastLoginDate) {
-        this.sessionId = sessionId;
-        this.authUserId = authUserId;
-        this.userId = userId;
-        this.walletId = walletId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.msisdn = msisdn;
-        this.companyName = companyName;
-        this.walletBalance = walletBalance;
-        this.group = group;
-        this.deviceId = deviceId;
-        this.authToken = authToken;
-        this.lastLoginDate = lastLoginDate;
-    }
-
-    public Long getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(Long sessionId) {
-        this.sessionId = sessionId;
-    }
-
-	public Long getAuthUserId() {
-		return authUserId;
-	}
-
-	public void setAuthUserId(Long authUserId) {
-		this.authUserId = authUserId;
-	}
-
-	public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Long getWalletId() {
-        return walletId;
-    }
-
-    public void setWalletId(Long walletId) {
-        this.walletId = walletId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getMsisdn() {
-        return msisdn;
-    }
-
-    public void setMsisdn(String msisdn) {
-        this.msisdn = msisdn;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public Double getWalletBalance() { return walletBalance; }
-
-    public void setWalletBalance(Double walletBalance) { this.walletBalance = walletBalance; }
-
-    public String getGroup() {
-        return group;
-    }
-
-    public void setGroup(String group) {
-        this.group = group;
-    }
-
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
-    }
-
-    public String getAuthToken() {
-        return authToken;
-    }
-
-    public SymSystemUser setAuthToken(String authToken) {
-        this.authToken = authToken;
-        return this;
-    }
-
-    public Date getLastLoginDate() {
-        return lastLoginDate;
-    }
-
-    public void setLastLoginDate(Date lastLoginDate) {
-        this.lastLoginDate = lastLoginDate;
-    }
-
-    public String getUserStatus() {
-        return userStatus;
-    }
-
-    public void setUserStatus(String userStatus) {
-        this.userStatus = userStatus;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    @Override
+    public String toString() {
+        return this.toPrintableString();
     }
 }

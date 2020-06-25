@@ -5,10 +5,10 @@ package net.symbiosis.authentication.provider;
  * Author:      Tich de Blak (Tsungai Kaviya)                              *
  */
 
-import net.symbiosis.authentication.persistence.entity.sym_auth_group_role;
 import net.symbiosis.authentication.persistence.entity.sym_auth_user;
 import net.symbiosis.authentication.persistence.entity.sym_session;
 import net.symbiosis.authentication.persistence.entity.sym_user;
+import net.symbiosis.common.persistence.entity.enumeration.sym_auth_group_role;
 import net.symbiosis.common.persistence.entity.enumeration.sym_channel;
 import net.symbiosis.common.persistence.entity.enumeration.sym_response_code;
 import net.symbiosis.common.persistence.entity.enumeration.sym_role;

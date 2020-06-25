@@ -1,6 +1,7 @@
 package net.symbiosis.notification.api.service;
 
 import net.symbiosis.common.contract.SymResponse;
+import net.symbiosis.common.contract.symbiosis.SymSystemUser;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /***************************************************************************
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface NotificationRestService {
 	@GetMapping("/hello")
 	default String hello() { return "Hello from Notification Service"; }
-    SymResponse sendSMS(String authToken, String channel, String msisdn, String message);
-	SymResponse resendSMS(String authToken, String channel, Long notificationId);
+//	@GetMapping("/authedHello")
+//	default String authedHello(SymSystemUser systemUser) { return "Hello " + principal.getUserInfo().getPreferredUsername(); }
+    SymResponse sendSMS(SymSystemUser systemUser, String channel, String msisdn, String message);
+	SymResponse resendSMS(SymSystemUser systemUser, String channel, Long notificationId);
 }

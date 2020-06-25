@@ -48,7 +48,7 @@
 
     <servlet-mapping>
         <servlet-name>authenticationServlet</servlet-name>
-        <url-pattern>/notification/*</url-pattern>
+        <url-pattern>/authentication/*</url-pattern>
     </servlet-mapping>
 
     <filter>

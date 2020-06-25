@@ -1,5 +1,10 @@
 package net.symbiosis.common.contract.symbiosis;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -12,6 +17,10 @@ import java.io.Serializable;
  * Contact:     tsungai.kaviya@gmail.com                                   *
  ***************************************************************************/
 
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter @Setter
 @XmlRootElement
 public class SymFinancialInstitution implements Serializable {
 
@@ -25,102 +34,4 @@ public class SymFinancialInstitution implements Serializable {
     private String contactPhone;
     private String contactFax;
     private String contactEmail;
-
-    public SymFinancialInstitution() {
-    }
-
-    public SymFinancialInstitution(Long institutionId, String institutionName, String institutionShortName,
-                                   String institutionType, Boolean enabled, String swiftCode, String physicalAddress,
-                                   String contactPhone, String contactFax, String contactEmail) {
-        this.institutionId = institutionId;
-        this.institutionName = institutionName;
-        this.institutionShortName = institutionShortName;
-        this.institutionType = institutionType;
-        this.enabled = enabled;
-        this.swiftCode = swiftCode;
-        this.physicalAddress = physicalAddress;
-        this.contactPhone = contactPhone;
-        this.contactFax = contactFax;
-        this.contactEmail = contactEmail;
-    }
-
-    public Long getInstitutionId() {
-        return institutionId;
-    }
-
-    public void setInstitutionId(Long institutionId) {
-        this.institutionId = institutionId;
-    }
-
-    public String getInstitutionName() {
-        return institutionName;
-    }
-
-    public void setInstitutionName(String institutionName) {
-        this.institutionName = institutionName;
-    }
-
-    public String getInstitutionShortName() {
-        return institutionShortName;
-    }
-
-    public void setInstitutionShortName(String institutionShortName) {
-        this.institutionShortName = institutionShortName;
-    }
-
-    public String getInstitutionType() {
-        return institutionType;
-    }
-
-    public void setInstitutionType(String institutionType) {
-        this.institutionType = institutionType;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public String getSwiftCode() {
-        return swiftCode;
-    }
-
-    public void setSwiftCode(String swiftCode) {
-        this.swiftCode = swiftCode;
-    }
-
-    public String getPhysicalAddress() {
-        return physicalAddress;
-    }
-
-    public void setPhysicalAddress(String physicalAddress) {
-        this.physicalAddress = physicalAddress;
-    }
-
-    public String getContactPhone() {
-        return contactPhone;
-    }
-
-    public void setContactPhone(String contactPhone) {
-        this.contactPhone = contactPhone;
-    }
-
-    public String getContactFax() {
-        return contactFax;
-    }
-
-    public void setContactFax(String contactFax) {
-        this.contactFax = contactFax;
-    }
-
-    public String getContactEmail() {
-        return contactEmail;
-    }
-
-    public void setContactEmail(String contactEmail) {
-        this.contactEmail = contactEmail;
-    }
 }

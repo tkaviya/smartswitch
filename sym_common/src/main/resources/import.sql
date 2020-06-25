@@ -453,6 +453,9 @@ insert ignore into sym_auth_group(auth_group_id, name, is_enabled) values (6, 'P
 insert ignore into sym_auth_group(auth_group_id, name, is_enabled) values (7, 'MOBILE_USER',1);
 insert ignore into sym_auth_group(auth_group_id, name, is_enabled) values (8, 'MOBILE_ADMIN',1);
 
+# insert ignore into sym_role(name, is_enabled) values ('ROLE_SMS_SEND', 1);
+# insert ignore into sym_role(name, is_enabled) values ('ROLE_EMAIL_SEND', 1);
+
 insert ignore into sym_role(name, is_enabled) values ('ROLE_WEB_MANAGE_EVD', 1);
 insert ignore into sym_role(name, is_enabled) values ('ROLE_WEB_MANAGE_STOCK', 1);
 insert ignore into sym_role(name, is_enabled) values ('ROLE_WEB_MANAGE_PROVIDERS', 1);
