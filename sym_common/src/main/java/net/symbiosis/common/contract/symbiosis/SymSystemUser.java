@@ -45,6 +45,27 @@ public class SymSystemUser implements Serializable, PrintableStringClass {
     protected String language;
     protected Date dateOfBirth;
 
+    public SymSystemUser(Long sessionId, Long authUserId, Long userId, Long walletId, String firstName, String lastName,
+                         String username, String email, String msisdn, String phoneNumber, String companyName, Double walletBalance,
+                         String group, String deviceId, String authToken, Date lastLoginDate) {
+        this.sessionId = sessionId;
+        this.authUserId = authUserId;
+        this.userId = userId;
+        this.walletId = walletId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.msisdn = msisdn;
+        this.phoneNumber = phoneNumber;
+        this.companyName = companyName;
+        this.walletBalance = walletBalance;
+        this.group = group;
+        this.deviceId = deviceId;
+        this.authToken = authToken;
+        this.lastLoginDate = lastLoginDate;
+    }
+
     @Override
     public String toString() {
         return this.toPrintableString();
