@@ -1,0 +1,17 @@
+Allowed duplicate POS registration
+
+Changed to username authentication for POS
+- POS must send username instead of IMEI
+
+Standardized REST API endpoints
+- Change endpoint on POS machine
+
+change javax.faces.PROJECT_STAGE in web.xml
+
+SQL Migration
+
+SQL Replication
+
+Update event types
+
+change wallet_group_voucher to wallet_group_voucher_discount

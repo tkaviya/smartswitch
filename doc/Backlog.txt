@@ -1,0 +1,37 @@
+- SMS notification
+- email images not generic
+- System Configuration
+- SMS Log + (resend SMS)
+- Ghana SMS is not While Listed
+- MTN Direct Topup
+- MTN Mobile Money
+- Glo
+- Create jboss-deployment-structure for PGP
+
+------------ priority 1 ------------
+Allow merchant to add users under his account
+MTN PGP
+voucher provider payment
+wallet transaction report
+wallet transfer report
+
+------------ priority 2 ------------
+Cashout
+Register existing company on app
+integration log report
+register existing user
+
+------------ priority 3 ------------
+
+?PDF Emails from interface
+Export selected columns only
+?Restore old data to table on failed update
+JBoss monitoring for reboot
+duplicate key exception on null emails/phone/msisdn
+swipe transaction report
+Cashout transaction list
+Bank Management
+Cashout account management
+Disable phone device
+pin import config
+

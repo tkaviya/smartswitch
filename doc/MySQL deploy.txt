@@ -1,0 +1,8 @@
+apt-get install mysql-server
+mysql -p -u root
+- create database sym_server;
+- grant all on sym_server.* to 'sym_sys'@'localhost' identified by 'sysP@$$WORDADM1N';
+# REVOKE ALL ON sym_server.* FROM 'sym_sys'@'localhost';
+nano /etc/mysql/my.cnf
+- wait_timeout=259200
+service mysql restart
