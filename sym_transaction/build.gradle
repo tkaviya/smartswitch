@@ -37,7 +37,7 @@ dependencies {
     testCompile project(':sym_common').sourceSets.test.output
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	implementation 'org.springframework.boot:spring-boot-starter-web' // use tomcat
+//	implementation 'org.springframework.boot:spring-boot-starter-web' // use tomcat
 
 //	implementation ('org.springframework.boot:spring-boot-starter-oauth2-client') { // use wildfly
 //		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'

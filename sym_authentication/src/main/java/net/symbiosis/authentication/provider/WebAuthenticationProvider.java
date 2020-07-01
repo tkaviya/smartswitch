@@ -60,7 +60,7 @@ public class WebAuthenticationProvider extends SymChainAuthenticationProvider {
             findByName(sym_auth_group.class, authGroup == null ? getConfig(CONFIG_DEFAULT_WEB_AUTH_GROUP) : authGroup.getName()),
             null);
 
-        if (registrationResponse.getResponseCode().equals(SUCCESS)) {
+        if (!registrationResponse.getResponseCode().equals(SUCCESS)) {
             return registrationResponse;
         }
 
@@ -84,6 +84,7 @@ public class WebAuthenticationProvider extends SymChainAuthenticationProvider {
 
         logger.info("Sending WEB registration email");
         String emailTemplate = getEmailTemplate("authentication/web_reg_success.html")
+            .replaceAll("%reg_fname%", newUser.getFirst_name())
             .replaceAll("%reg_lname%", newUser.getLast_name())
             .replaceAll("%reg_username%", newUser.getUsername())
             .replaceAll("%reg_userId%", String.valueOf(registrationResponse.getResponseObject().getId().intValue()))
