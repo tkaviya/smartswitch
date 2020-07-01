@@ -36,7 +36,7 @@ public class AuthenticationRestController implements AuthenticationRestService {
 		this.authenticationRequestProcessor = authenticationRequestProcessor;
 	}
 
-
+	@ApiOperation(value = "Register a new user on the mobile channel", response = SymSystemUserList.class)
 	@Override
 	@PostMapping("/register/mobile")
 	public SymSystemUserList registerMobileUser(@RequestParam("email") String email,
@@ -53,7 +53,7 @@ public class AuthenticationRestController implements AuthenticationRestService {
 				getRealParamValue(firstName), getRealParamValue(lastName), getRealParamValue(pin));
 	}
 
-	@ApiOperation(value = "Register POS Machine", response = SymSystemUserList.class)
+	@ApiOperation(value = "Register a POS Machine", response = SymSystemUserList.class)
 	@Override
 	@PostMapping("/register/pos")
 	public SymSystemUserList registerPosUser(@RequestParam("branchName") String branchName,
@@ -70,6 +70,7 @@ public class AuthenticationRestController implements AuthenticationRestService {
 				imei1, imei2, imsi1, imsi2, msisdn1,msisdn2,username,pin);
 	}
 
+	@ApiOperation(value = "Register a new user on the web channel", response = SymSystemUserList.class)
 	@Override
 	@PostMapping("/register/web")
 	public SymSystemUserList registerWebUser(@RequestParam("email") String email,
@@ -85,6 +86,7 @@ public class AuthenticationRestController implements AuthenticationRestService {
 				deviceId, firstName, lastName, dateOfBirth);
 	}
 
+	@ApiOperation(value = "Search for a user by either email/msisdn/username/first or last name", response = SymSystemUserList.class)
 	@Override
 	@GetMapping("/search/user")
 	public SymSystemUserList searchUser(@RequestParam("email") String email,
@@ -110,7 +112,7 @@ public class AuthenticationRestController implements AuthenticationRestService {
 	}
 
 	@Override
-	@PostMapping("/session")
+	@PostMapping("/login")
 	public SymSystemUserList startSession(@RequestParam("username") String username,
 	                                      @RequestParam("deviceId") String deviceId,
 	                                      @RequestParam("channel") String channel,

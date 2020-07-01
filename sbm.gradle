@@ -130,8 +130,11 @@ project.ext.libraries = [
 		/* ################################################### lombok ################################################## */
 		lombok:				[ group: 'org.projectlombok',			name: 'lombok',				version: '1.18.12' ],
 
-		/* ################################################### lombok ################################################## */
+		/* ################################################### jasper ################################################## */
 		tomcat_jasper:		[ group: 'org.apache.tomcat.embed',		name: 'tomcat-embed-jasper' ],
+
+		/* ################################################### json ################################################## */
+		jjwt:				[ group: 'io.jsonwebtoken',		name: 'jjwt', 				version: '0.8.0'],
 
 		/* ################################################### jhades ################################################## */
 		jhades:				[ group: 'org.jhades',			name: 'jhades',				version: '1.0.4' ],
@@ -153,7 +156,7 @@ project.ext.libraries = [
 		spring_hateoas:  	[ group: 'org.springframework.hateoas', name: 'spring-hateoas',		version: '0.3.0.RELEASE' ],
 		spring_faces:  		[ group: 'org.springframework.webflow', name: 'spring-faces',		version: '2.5.1.RELEASE' ],
 		spring_javaconfig:  [ group: 'org.springframework.javaconfig', name: 'spring-javaconfig',		version: '1.0.0.m3' ],
-		
+
 
 		/* ####################################### com.fasterxml.jackson.dataformat ###################################### */
 		jackson_xml:		[ group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: project.jackson_version ],
