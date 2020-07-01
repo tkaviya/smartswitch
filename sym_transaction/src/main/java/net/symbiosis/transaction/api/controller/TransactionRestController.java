@@ -17,7 +17,6 @@ import net.symbiosis.transaction.api.service.TransactionRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.logging.Logger;
 
 import static java.lang.String.format;
@@ -39,7 +38,7 @@ public class TransactionRestController implements TransactionRestService {
     @Override
     @ApiOperation(value = "Get wallet information for specified user ID", response = SymResponse.class)
     @GetMapping("/user/{userId}/wallet")
-    public SymWalletList getWallet(@PathParam("userId") Long userId, @RequestParam("channel") String channel) {
+    public SymWalletList getWallet(@PathVariable("userId") Long userId, @RequestParam("channel") String channel) {
         logger.info(format("Got request to get wallet information for userId %s on channel %s", userId, channel));
         return transactionRequestProcessor.getWallet(getRealParamValue(userId), getRealParamValue(channel));
     }
@@ -47,7 +46,7 @@ public class TransactionRestController implements TransactionRestService {
     @Override
     @ApiOperation(value = "Get wallet transaction history for specified user ID", response = SymResponse.class)
     @GetMapping("/user/{userId}/history")
-    public SymWalletTransactionList getWalletHistory(@PathParam("userId") Long userId, @RequestParam("channel") String channel) {
+    public SymWalletTransactionList getWalletHistory(@PathVariable("userId") Long userId, @RequestParam("channel") String channel) {
         logger.info(format("Got request to get transaction history for userId %s on channel %s", userId, channel));
         return transactionRequestProcessor.getWalletHistory(getRealParamValue(userId), getRealParamValue(channel));
     }
