@@ -42,9 +42,7 @@ public class SymUserDetailsService implements UserDetailsService {
 
     private sym_channel symChannel;
 
-    void setSymChannel(sym_channel symChannel) {
-        this.symChannel = symChannel;
-    }
+    public SymUserDetailsService setSymChannel(sym_channel symChannel) { this.symChannel = symChannel; return this; }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -6,13 +6,21 @@ import net.symbiosis.authentication.api.service.AuthenticationRestService;
 import net.symbiosis.common.contract.SymResponse;
 import net.symbiosis.common.contract.SymSystemUserList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import static java.lang.String.format;
+import static java.util.stream.Collectors.toList;
 import static net.symbiosis.common.utilities.WebUtils.getRealParamValue;
 import static net.symbiosis.core_lib.enumeration.SymChannel.fromString;
+import static org.springframework.http.ResponseEntity.ok;
 
 /***************************************************************************
  *                                                                         *
@@ -118,6 +126,18 @@ public class AuthenticationRestController implements AuthenticationRestService {
 	                                      @RequestParam("channel") String channel,
 	                                      @RequestParam("password") String password) {
 		return authenticationRequestProcessor.startSession(username, deviceId, fromString(channel), password);
+	}
+
+	@GetMapping("/me")
+	public ResponseEntity currentUser(@AuthenticationPrincipal UserDetails userDetails){
+		Map<Object, Object> model = new HashMap<>();
+		model.put("username", userDetails.getUsername());
+		model.put("roles", userDetails.getAuthorities()
+			.stream()
+			.map(GrantedAuthority::getAuthority)
+			.collect(toList())
+		);
+		return ok(model);
 	}
 
 	@Override

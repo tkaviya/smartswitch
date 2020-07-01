@@ -3,6 +3,9 @@ package net.symbiosis.authentication.api.impl;
 import net.symbiosis.authentication.api.service.AuthenticationRequestProcessor;
 import net.symbiosis.authentication.api.service.ConverterService;
 import net.symbiosis.authentication.persistence.entity.sym_user;
+import net.symbiosis.authentication.provider.SymUserDetailsService;
+import net.symbiosis.authentication.provider.SymbiosisAuthenticator;
+import net.symbiosis.authentication.provider.jwt.JwtTokenProvider;
 import net.symbiosis.common.contract.SymResponse;
 import net.symbiosis.common.contract.SymSystemUserList;
 import net.symbiosis.common.contract.symbiosis.SymSystemUser;
@@ -12,9 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import static java.lang.String.format;
+import static net.symbiosis.common.persistence.helper.SymEnumHelper.fromEnum;
 import static net.symbiosis.core_lib.enumeration.SymResponseCode.INPUT_INCOMPLETE_REQUEST;
 import static net.symbiosis.core_lib.enumeration.SymResponseCode.SUCCESS;
 import static net.symbiosis.core_lib.utilities.CommonUtilities.isNullOrEmpty;
@@ -34,10 +39,12 @@ public class AuthenticationRequestProcessorImpl implements AuthenticationRequest
 
 	private final Logger logger = Logger.getLogger(this.getClass().getSimpleName());
 	private final ConverterService converterService;
+	private final JwtTokenProvider jwtTokenProvider;
 
 	@Autowired
-	public AuthenticationRequestProcessorImpl(ConverterService converterService) {
+	public AuthenticationRequestProcessorImpl(ConverterService converterService, JwtTokenProvider jwtTokenProvider) {
 		this.converterService = converterService;
+		this.jwtTokenProvider = jwtTokenProvider;
 	}
 
 	@Override
@@ -107,8 +114,27 @@ public class AuthenticationRequestProcessorImpl implements AuthenticationRequest
 	}
 
 	@Override
-	public SymSystemUserList startSession(String username, String deviceId, SymChannel fromString, String password) {
-		return null;
+	public SymSystemUserList startSession(String username, String deviceId, SymChannel channel, String password) {
+		var symUserDetailsService = new SymUserDetailsService().setSymChannel(fromEnum(channel));
+
+		var user = symUserDetailsService.loadUserByUsername(username);
+
+		var authResponse = SymbiosisAuthenticator.startSession(fromEnum(channel), deviceId, username, password, true);
+
+		if (!authResponse.getResponseCode().equals(SUCCESS)) {
+			return new SymSystemUserList(authResponse.getResponseCode()).setResponse(authResponse.getMessage());
+		}
+
+		List<String> roles = new ArrayList<>();
+		for (var authority : user.getAuthorities()) {
+			roles.add(authority.getAuthority());
+		}
+
+		String token = jwtTokenProvider.createToken(username, roles);
+
+		return new SymSystemUserList(SUCCESS,
+			converterService.toDTO(authResponse.getResponseObject().getAuth_user().setAuth_token(token))
+		);
 	}
 
 	@Override

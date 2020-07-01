@@ -66,6 +66,8 @@ public class SymSystemUser implements Serializable, PrintableStringClass {
         this.lastLoginDate = lastLoginDate;
     }
 
+    public SymSystemUser setAuthToken(String authToken) { this.authToken = authToken; return this; }
+
     @Override
     public String toString() {
         return this.toPrintableString();

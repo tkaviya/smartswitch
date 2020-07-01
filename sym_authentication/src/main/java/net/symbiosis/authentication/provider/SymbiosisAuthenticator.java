@@ -50,8 +50,8 @@ public class SymbiosisAuthenticator {
 
     private static Logger logger = Logger.getLogger(SymbiosisAuthenticator.class.getSimpleName());
 
-    static SymResponseObject<sym_session> startSession(sym_channel channel, String deviceId, String username,
-                                                       String password, boolean searchAllUsernameTypes) {
+    public static SymResponseObject<sym_session> startSession(sym_channel channel, String deviceId, String username,
+                                                              String password, boolean searchAllUsernameTypes) {
 
         if (channel == null) {
             return new SymResponseObject<sym_session>(INPUT_INVALID_REQUEST).setMessage("Invalid Channel");
