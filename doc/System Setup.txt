@@ -1,0 +1,90 @@
+On Linux:
+
+I have written a script with exactly what is required for an install onto CentOS:
+
+    - Open \sym_server\doc\google cloud\tchala\tchala_hosting_server_setup.sh and run required commands one by one
+    - You will then need to go through configurations done on the windows server afterwards
+    - If you install wildfly using the provided wildfly setup scripts, you will additionally need to copy the modules:
+
+On Windows:
+
+1. Install Java 11 JDK & Wildfly 19
+
+    - Copy the 2 folders from \sym_server\doc\google cloud\tchala\ to \wildfly-19.0.0.Final\modules\system\layers\base\
+    - Copy the keystore file \sym_server\doc\Wildfly\empowerttl.jks into the Wildfly folder \wildfly-19.0.0.Final\standalone\configuration\
+    - You will need to point the Wildfly to your SSL keystore:
+    - Firstly backup you existing configuration file: \wildfly-19.0.0.Final\standalone\configuration\standalone.xml
+
+    OPTION 1:
+        Replace you current configuration from \wildfly-19.0.0.Final\standalone\configuration\standalone.xml with mine \sym_server\doc\Wildfly\standalone.xml
+
+    OPTION 2:
+
+        - Edit \wildfly-19.0.0.Final\standalone\configuration\standalone.xml and add the following security realm:
+
+            <security-realm name="SSLRealm">
+                <server-identities>
+                    <ssl>
+                        <keystore path="empowerttl.jks" relative-to="jboss.server.config.dir" keystore-password="empSSL1KEYpass@@" alias="*.empowerttl.com"/>
+                    </ssl>
+                </server-identities>
+            </security-realm>
+
+        - Add an https listener (Roughly line 488 of standalone.xml) to use the SSLRealm. It should have a structure like the below:
+            <subsystem xmlns="urn:jboss:domain:undertow:10.0">
+                <server name="default-server">
+                    <https-listener name="https" socket-binding="https" security-realm="SSLRealm" enable-http2="true"/>
+
+        - You can check my configuration: \wildfly-19.0.0.Final\standalone\configuration\standalone.xml to make sure you have done it correctly
+
+2. Install a MySQL Server above version 5.7. I have used WAMP Server 3.1.0 (with MySQL 5.7.19) or XAMPP to provide MySQL
+
+    - The version of MySQL installed determines the dialect specified in file \sym_server\sym_persistence\src\main\resources\properties\database\application.properties
+
+    - The dialect currently specified (hibernate.dialect=org.hibernate.dialect.MySQL8Dialect) corresponds to only MySQL > 5.7
+
+    - Login to your MySQL as root and create a database called sym_server (SQL = create database sym_server;)
+
+    - Grant permissions to sym_sys user on the database. Depending on the version the SQL for it may be different:
+        Windows SQL:
+            grant all on sym_server.* to 'sym_sys'@'localhost' identified by 'sysP@$$WORDADM1N';
+
+        Linux/Newer version SQL:
+            CREATE USER 'sym_sys'@'localhost' IDENTIFIED BY 'sysP@$$WORDADM1N';
+            GRANT ALL PRIVILEGES ON sym_server.* TO 'sym_sys'@'localhost' WITH GRANT OPTION;
+
+    - Flush privileges and restart
+
+3. Build your project (gradle clean build -x test) and deploy the sym_web_ui war file found under symbiosis\sym_web_ui\build\libs\sym_web_ui-1.0.0.war
+
+    - If deployed with its default name, your context root will be http://localhost:8080/sym_web_ui-1.0.0/ (username: admin, password: testpass)
+
+********************* PS ***********************
+
+- Glo is only accessible via VPN from our Dev & Live environments and cannot be tested on local machines (except through an SSH tunnel through our servers)
+- Some phone numbers you can use for testing integrations because only Ghana numbers will work:
+    MTN Momo Phone:		0547965699
+    Francois' Phone:	0242279182
+    Glo Demo Phone:		0231879665
+
+
+****************** BELOW ARE OTHER OPTIONAL THINGS YOU CAN DO DURING SERVER SETUP *******************
+
+4. All your system defaults are found under \sym_server\sym_persistence\src\main\resources\import.sql.
+
+    - This file is run every time the database is created automatically by Hibernate
+    - In the file \sym_server\sym_persistence\src\main\resources\properties\database\application.properties there is a configuration to always create the database or only update columns
+    - Setting hibernate.hbm2ddl.auto=update will only update the database if columns change
+    - Setting hibernate.hbm2ddl.auto=create will ALWAYS delete and recreate the database when you restart the server
+
+5. For the MTN integration to work, you must create a file that matches the location in the configuration in imports.sql:
+    - mtn_gh_unique_id_file, for eg. on windows you can make that setting c:\mtnfile.txt and you must put a single line with the MTN unique id in it
+    - The MTN unique ID is a continuous number sent to MTN currently at roughly just below 80000000
+    - Putting 80000000 or higher in the file should avoid duplicate reference error, the system auto updates this number
+    - If the system is run from multiple servers, there is no way to track the uniqueness of the number, hence it is advisable to only test MTN from the Dev/Live server
+
+6. There is a testcase which can be use to create a default password: \sym_server\sym_authentication\src\test\java\net\symbiosis\authentication\test\SymbiosisAuthenticatorTest.java
+    - Running that test case will give you a salt and a hash
+    - In the import.sql there is an example of where I have used such a salt & hash to create a default admin user (insert ignore into sym_user.... roughly on line 625)
+    - To create another user you will need to duplicate all the last 6 lines of that file then update with your username, salt, hash & other details.
+    - Note that you cannot have duplicate ids, phone numbers, email, username, company VAT Number & company Registration number

@@ -7,25 +7,30 @@
 - MTN Mobile Money
 - Glo
 - Create jboss-deployment-structure for PGP
+?Restore old data to table on failed update
+- remove pin from logging
+- MTN PGP
 
 ------------ priority 1 ------------
 Allow merchant to add users under his account
-MTN PGP
 voucher provider payment
 wallet transaction report
 wallet transfer report
+deposit type on loading funds shows up incorrectly
+records before 45 are not showing on system report
+reduce decimal places on voucher purchase reports on Web UI
 
 ------------ priority 2 ------------
 Cashout
 Register existing company on app
 integration log report
 register existing user
+remove dependency on IMEI
 
 ------------ priority 3 ------------
 
 ?PDF Emails from interface
 Export selected columns only
-?Restore old data to table on failed update
 JBoss monitoring for reboot
 duplicate key exception on null emails/phone/msisdn
 swipe transaction report

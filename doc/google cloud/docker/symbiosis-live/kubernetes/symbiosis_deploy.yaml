@@ -1,0 +1,86 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-symbiosis-live
+  namespace: default
+  labels:
+    app: nginx-symbiosis-live
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-symbiosis-live
+  template:
+    metadata:
+      labels:
+        app: nginx-symbiosis-live
+    spec:
+      containers:
+        - name: github-empowerttl-symbiosis-docker-live-1
+          image: gcr.io/sage-ripple-146416/github_empowerttl_symbiosis-docker-live:4764119
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nginx-symbiosis-live-hpa-o0p5
+  namespace: default
+  labels:
+    app: nginx-symbiosis-live
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: nginx-symbiosis-live
+    apiVersion: apps/v1
+  minReplicas: 1
+  maxReplicas: 3
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-symbiosis-live-service
+  namespace: default
+  labels:
+    app: nginx-symbiosis-live
+spec:
+  clusterIP: 10.8.14.184
+  externalTrafficPolicy: Cluster
+  ports:
+    - name: live-ssh
+      nodePort: 30765
+      port: 22
+      protocol: TCP
+      targetPort: 22
+    - name: live-http
+      nodePort: 30880
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    - name: live-https
+      nodePort: 31575
+      port: 443
+      protocol: TCP
+      targetPort: 443
+    - name: live-wilfly-http
+      nodePort: 30698
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    - name: live-wildfly-https
+      nodePort: 30798
+      port: 8443
+      protocol: TCP
+      targetPort: 8443
+  selector:
+    app: nginx-symbiosis-live
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+      - ip: 35.239.117.105

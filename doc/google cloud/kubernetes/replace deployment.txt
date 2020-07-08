@@ -1,0 +1,1 @@
+kuberctl replace --force -f https://github.com/empowerttl/symbiosis-docker-test/tree/master/kubernete/ssymbiosis_deploy.yaml

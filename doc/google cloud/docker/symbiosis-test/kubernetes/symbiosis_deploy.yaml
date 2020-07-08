@@ -1,0 +1,258 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-symbiosis-test
+  namespace: default
+  labels:
+    app: nginx-symbiosis-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-symbiosis-test
+  template:
+    metadata:
+      labels:
+        app: nginx-symbiosis-test
+    spec:
+      containers:
+        - name: github-empowerttl-symbiosis-docker-test-1
+          image: gcr.io/sage-ripple-146416/github_empowerttl_symbiosis-docker-test:4345930
+          volumeMounts:
+            - name: etc-default-storage
+              mountPath: /etc/default/
+            - name: etc-apache2-storage
+              mountPath: /etc/apache2/
+            - name: etc-mysql-storage
+              mountPath: /etc/mysql/
+            - name: etc-postfix-storage
+              mountPath: /etc/postfix/
+            - name: root-storage
+              mountPath: /root/
+            - name: home-storage
+              mountPath: /home/
+            - name: opt-storage
+              mountPath: /opt/
+            - name: jenkins-storage
+              mountPath: /var/lib/jenkins/
+            - name: mysql-storage
+              mountPath: /var/lib/mysql/
+            - name: log-storage
+              mountPath: /var/log/
+      volumes:
+        - name: etc-default-storage
+          persistentVolumeClaim:
+            claimName: pvc-test-etc-default-data
+        - name: etc-apache2-storage
+          persistentVolumeClaim:
+            claimName: pvc-test-etc-apache2-data
+        - name: etc-mysql-storage
+          persistentVolumeClaim:
+            claimName: pvc-test-etc-mysql-data
+        - name: etc-postfix-storage
+          persistentVolumeClaim:
+            claimName: pvc-test-etc-postfix-data
+        - name: root-storage
+          persistentVolumeClaim:
+            claimName: pvc-test-root-data
+        - name: home-storage
+          persistentVolumeClaim:
+            claimName: pvc-test-home-data
+        - name: opt-storage
+          persistentVolumeClaim:
+            claimName: pvc-test-opt-data
+        - name: jenkins-storage
+          persistentVolumeClaim:
+            claimName: pvc-test-jenkins-data
+        - name: mysql-storage
+          persistentVolumeClaim:
+            claimName: pvc-test-mysql-data
+        - name: log-storage
+          persistentVolumeClaim:
+            claimName: pvc-test-log-data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-test-etc-default-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Mi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-test-etc-apache2-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Mi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-test-etc-mysql-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Mi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-test-etc-postfix-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Mi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-test-root-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-test-home-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 15Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-test-opt-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-test-jenkins-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-test-mysql-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-test-log-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nginx-symbiosis-test-hpa-asll
+  namespace: default
+  labels:
+    app: nginx-symbiosis-test
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: nginx-symbiosis-test
+    apiVersion: apps/v1
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-symbiosis-test-service
+  namespace: default
+  labels:
+    app: nginx-symbiosis-test
+spec:
+  clusterIP: 10.8.13.227
+  externalTrafficPolicy: Cluster
+  ports:
+    - name: test-ssh
+      nodePort: 30497
+      port: 22
+      protocol: TCP
+      targetPort: 22
+    - name: test-http
+      nodePort: 30732
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    - name: test-https
+      nodePort: 30701
+      port: 443
+      protocol: TCP
+      targetPort: 443
+    - name: test-apache2-http
+      nodePort: 30851
+      port: 8008
+      protocol: TCP
+      targetPort: 8008
+    - name: test-wildfly-http
+      nodePort: 30856
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    - name: test-wildfly-https
+      nodePort: 30615
+      port: 8443
+      protocol: TCP
+      targetPort: 8443
+    - name: test-jenkins
+      nodePort: 32506
+      port: 17505
+      protocol: TCP
+      targetPort: 17505
+  selector:
+    app: nginx-symbiosis-test
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+      - ip: 34.71.61.29

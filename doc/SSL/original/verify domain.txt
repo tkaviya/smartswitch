@@ -1,0 +1,1 @@
+www.yourdomain.com.   3600   IN   TXT   "201703281802516aff1iyhq9gojisdgtdfk3wrv8s72li1lggjvt13rdkzxwruoq"

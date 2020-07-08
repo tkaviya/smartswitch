@@ -10,6 +10,7 @@ import net.symbiosis.common.contract.symbiosis.SymSystemUser;
 import net.symbiosis.common.persistence.entity.enumeration.sym_distribution_channel;
 import net.symbiosis.common.persistence.log.sym_request_response_log;
 import net.symbiosis.core_lib.enumeration.SymDistributionChannel;
+import net.symbiosis.core_lib.enumeration.SymNotificationType;
 import net.symbiosis.core_lib.enumeration.SymResponseCode;
 import net.symbiosis.notification.api.RequestProcessor;
 import net.symbiosis.notification.api.service.NotificationRequestProcessor;
@@ -28,7 +29,6 @@ import static net.symbiosis.common.utilities.ValidationHelper.validateChannel;
 import static net.symbiosis.core_lib.enumeration.DBConfigVars.*;
 import static net.symbiosis.core_lib.enumeration.SymEventType.SMS_NOTIFICATION;
 import static net.symbiosis.core_lib.enumeration.SymNotificationStatus.*;
-import static net.symbiosis.core_lib.enumeration.SymNotificationType.SMS;
 import static net.symbiosis.core_lib.enumeration.SymResponseCode.*;
 import static net.symbiosis.core_lib.utilities.CommonUtilities.formatFullMsisdn;
 import static net.symbiosis.persistence.helper.DaoManager.getEntityManagerRepo;
@@ -88,7 +88,7 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
             return new SymResponse(INPUT_INVALID_REQUEST);
         }
 
-        sym_notification notification = new sym_notification(systemUser.getAuthUserId(), phoneNumber, fromEnum(SMS),
+        sym_notification notification = new sym_notification(systemUser.getAuthUserId(), phoneNumber, fromEnum(SymNotificationType.SMS),
             null, fromEnum(SENDING), new Date(), message, null
         ).save();
 
@@ -120,7 +120,7 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
         var log = new sym_request_response_log(channelResponse.getResponseObject(), fromEnum(SMS_NOTIFICATION), incomingRequest).save();
 
         var notification = getEntityManagerRepo().findById(sym_notification.class, notificationId);
-        if (notification == null || !notification.getNotification_type().getName().equals(SMS.name())) {
+        if (notification == null || !notification.getNotification_type().getName().equals(SymNotificationType.SMS.name())) {
             String responseMessage = format("Resend SMS failed! %s", channelResponse.getMessage());
             logger.warning(responseMessage);
             return new SymResponse(channelResponse.getResponseCode());

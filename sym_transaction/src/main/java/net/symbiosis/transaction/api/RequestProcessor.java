@@ -1,4 +1,4 @@
-package net.symbiosis.notification.api;
+package net.symbiosis.transaction.api;
 
 import net.symbiosis.common.persistence.entity.enumeration.sym_response_code;
 import net.symbiosis.common.persistence.log.sym_request_response_log;
