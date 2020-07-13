@@ -7,6 +7,7 @@ import com.nexmo.client.sms.messages.TextMessage;
 import net.symbiosis.common.configuration.ThreadPoolManager;
 import net.symbiosis.common.contract.SymList;
 import net.symbiosis.common.contract.SymResponse;
+import net.symbiosis.common.contract.SymResponseData;
 import net.symbiosis.common.contract.symbiosis.SymNotification;
 import net.symbiosis.common.contract.symbiosis.SymSystemUser;
 import net.symbiosis.common.persistence.entity.enumeration.sym_distribution_channel;
@@ -29,7 +30,6 @@ import static com.nexmo.client.sms.MessageStatus.OK;
 import static java.lang.Integer.parseInt;
 import static java.lang.String.format;
 import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 import static net.symbiosis.common.persistence.dao.implementation.SymConfigDaoImpl.getConfig;
 import static net.symbiosis.common.persistence.helper.SymEnumHelper.fromEnum;
 import static net.symbiosis.common.utilities.ValidationHelper.validateChannel;
@@ -64,7 +64,7 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
 	}
 
 	@Override
-	public SymList<SymNotification> getSMS(SymSystemUser systemUser, String channel, Long notificationId) {
+	public SymResponseData<SymNotification> getSMS(SymSystemUser systemUser, String channel, Long notificationId) {
 		logger.info(format("Getting SMS notification with ID %s for user %s from channel %s", notificationId,
 				systemUser.getUsername(), channel));
 
@@ -82,7 +82,7 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
 				.setOutgoing_response(DATA_NOT_FOUND.getMessage())
 				.setOutgoing_response_time(new Date())
 				.save();
-			return new SymList<>(DATA_NOT_FOUND);
+			return new SymResponseData<>(DATA_NOT_FOUND);
 		}
 
 		requestResponseLog.setResponse_code(fromEnum(SUCCESS))
@@ -91,7 +91,7 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
 				.save();
 
 		logger.info(format("Returning SMS: %s", notification.toString()));
-		return new SymList<>(SUCCESS, new ArrayList<>(singletonList(converterService.toDTO(notification))));
+		return new SymResponseData<>(SUCCESS, converterService.toDTO(notification));
 	}
 
 	@Override
@@ -247,7 +247,8 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
                             notification.setRemote_reference(smsSubmissionResponseMessage.getId());
                         }
 
-                        if (smsSubmissionResponseMessage.getStatus().equals(OK)) {
+	                    notification.setSubmit_response(smsSubmissionResponseMessage.getStatus().name());
+	                    if (smsSubmissionResponseMessage.getStatus().equals(OK)) {
                             notification.setNotification_status(fromEnum(SENT));
                         } else if (smsSubmissionResponseMessage.isTemporaryError()) {
                             notification.setNotification_status(fromEnum(QUEUED));

@@ -11,6 +11,7 @@ package net.symbiosis.notification.api.controller;
 import io.swagger.annotations.ApiOperation;
 import net.symbiosis.common.contract.SymList;
 import net.symbiosis.common.contract.SymResponse;
+import net.symbiosis.common.contract.SymResponseData;
 import net.symbiosis.common.contract.api.AuthenticationAPI;
 import net.symbiosis.common.contract.symbiosis.SymNotification;
 import net.symbiosis.common.contract.symbiosis.SymSystemUser;
@@ -57,7 +58,7 @@ public class NotificationRestController implements NotificationRestService {
     @ApiOperation(value = "Get SMS Messages with notificationIds between specified start and end IDs", response = SymResponseObject.class)
 //    @RolesAllowed("ROLE_NOTIFICATION_HISTORY")
     @GetMapping("/sms")
-    public SymList<SymNotification> getSMS(@RequestParam("startId") Long startId,
+    public SymList<SymNotification> getSMSs(@RequestParam("startId") Long startId,
                                            @RequestParam("endId") Long endId) {
         logger.info(format("Got request to get SMSs between ID %s and %s from user %s on channel %s",
                 startId, endId, getAuthenticatedUser().getUsername(), getDefaultChannel().name()));
@@ -69,7 +70,7 @@ public class NotificationRestController implements NotificationRestService {
     @ApiOperation(value = "Get SMS Message with specified notificationId", response = SymResponseObject.class)
 //    @RolesAllowed("ROLE_NOTIFICATION_HISTORY")
     @GetMapping("/sms/{notificationId}")
-    public SymList<SymNotification> getSMS(@PathVariable("notificationId") Long notificationId) {
+    public SymResponseData<SymNotification> getSMS(@PathVariable("notificationId") Long notificationId) {
         logger.info(format("Got request to get SMS with ID %s from user %s on channel %s",
                 notificationId, getAuthenticatedUser().getUsername(), getDefaultChannel().name()));
         return notificationRequestProcessor.getSMS(getAuthenticatedUser(), getDefaultChannel().name(),

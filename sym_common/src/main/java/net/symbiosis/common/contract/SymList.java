@@ -1,5 +1,9 @@
 package net.symbiosis.common.contract;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import net.symbiosis.common.contract.base.DataContract;
 import net.symbiosis.common.contract.symbiosis.SymNotification;
 import net.symbiosis.core_lib.enumeration.SymResponseCode;
@@ -14,6 +18,10 @@ import java.util.ArrayList;
  * Author:      Tsungai Kaviya                                             *
  ***************************************************************************/
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @XmlRootElement
 @XmlSeeAlso({
     DataContract.class,
@@ -23,23 +31,12 @@ public class SymList<T> extends DataContract<SymList<T>> {
 
     protected ArrayList<T> responseData;
 
-    public SymList() {
-    }
-
     public SymList(SymResponseCode symResponseCode) {
         this.symResponse = new SymResponse(symResponseCode);
     }
 
     public SymList(SymResponseCode symResponseCode, ArrayList<T> responseData) {
         this.symResponse = new SymResponse(symResponseCode);
-        this.responseData = responseData;
-    }
-
-    public ArrayList<T> getResponseData() {
-        return responseData;
-    }
-
-    public void setResponseData(ArrayList<T> responseData) {
         this.responseData = responseData;
     }
 }

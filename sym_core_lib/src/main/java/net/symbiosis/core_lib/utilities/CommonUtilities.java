@@ -160,22 +160,22 @@ public class CommonUtilities {
     public static String formatFullMsisdn(String msisdn, String countryCodePrefix) {
 
         if (msisdn == null || countryCodePrefix == null) {
-            return msisdn;
+            return msisdn.trim();
         }
 
         if (msisdn.length() > 10) {
             if (msisdn.startsWith(countryCodePrefix)) {
-                return msisdn;
+                return msisdn.trim();
             } else if (msisdn.startsWith("+")) {
-                msisdn = msisdn.replaceFirst("\\+", "");
+                msisdn = msisdn.replaceFirst("\\+", "").trim();
             } else if (msisdn.startsWith("00")) {
-                msisdn = msisdn.replaceFirst("00", "");
+                msisdn = msisdn.replaceFirst("00", "").trim();
             }
-            return msisdn;
+            return msisdn.trim();
         } else if (msisdn.length() == 10 && msisdn.startsWith("0")) {
-            return msisdn.replaceFirst("0", countryCodePrefix);
+            return msisdn.replaceFirst("0", countryCodePrefix).trim();
         }
-        return msisdn;
+        return msisdn.trim();
     }
 
     public static Long format10DigitPhoneNumber(Long msisdn, String countryCodePrefix) {
