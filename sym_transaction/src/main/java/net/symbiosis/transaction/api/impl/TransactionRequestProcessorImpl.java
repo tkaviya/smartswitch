@@ -2,6 +2,7 @@ package net.symbiosis.transaction.api.impl;
 
 import net.symbiosis.common.contract.SymWalletList;
 import net.symbiosis.common.contract.SymWalletTransactionList;
+import net.symbiosis.common.contract.symbiosis.SymSystemUser;
 import net.symbiosis.common.contract.symbiosis.SymWalletTransaction;
 import net.symbiosis.common.persistence.log.sym_request_response_log;
 import net.symbiosis.core_lib.structure.Pair;
@@ -44,15 +45,16 @@ public class TransactionRequestProcessorImpl implements TransactionRequestProces
 	}
 
 	@Override
-	public SymWalletList getWallet(Long userId, String channel) {
-		logger.info(format("Getting wallet user %s from channel %s", userId, channel));
+	public SymWalletList getWallet(SymSystemUser systemUser, String channel) {
+		logger.info(format("Getting wallet for user %s from channel %s", systemUser.getUsername(), channel));
 
 		sym_request_response_log requestResponseLog = new sym_request_response_log(
-			fromEnum(fromString(channel)), fromEnum(WALLET_HISTORY), format("userId=%s|channel=%s", userId, channel)
+			fromEnum(fromString(channel)), fromEnum(WALLET_HISTORY), systemUser.getUserId(), systemUser.getAuthUserId(),
+				format("username=%s|channel=%s", systemUser.getUsername(), channel)
 		).save();
 
 		var wallet = getEntityManagerRepo().findWhere(sym_wallet.class,
-				singletonList(new Pair<>("sym_user_id", userId))).get(0);
+				singletonList(new Pair<>("sym_user_id", systemUser.getUserId()))).get(0);
 
 		requestResponseLog.setResponse_code(fromEnum(SUCCESS))
 				.setOutgoing_response(wallet.toString())
@@ -64,20 +66,21 @@ public class TransactionRequestProcessorImpl implements TransactionRequestProces
 	}
 
 	@Override
-	public SymWalletTransactionList getWalletHistory(Long userId, String channel) {
-		logger.info(format("Getting wallet transactions for user %s from channel %s", userId, channel));
+	public SymWalletTransactionList getWalletHistory(SymSystemUser systemUser, String channel) {
+		logger.info(format("Getting wallet transactions for user %s from channel %s", systemUser.getUsername(), channel));
 
 		sym_request_response_log requestResponseLog = new sym_request_response_log(
-			fromEnum(fromString(channel)), fromEnum(WALLET_HISTORY), format("userId=%s|channel=%s", userId, channel)
+			fromEnum(fromString(channel)), fromEnum(WALLET_HISTORY), systemUser.getUserId(), systemUser.getAuthUserId(),
+				format("username=%s|channel=%s", systemUser.getUsername(), channel)
 		).save();
 
 		ArrayList<SymWalletTransaction> walletTransactions = new ArrayList<>();
 		getEntityManagerRepo().findWhere(sym_wallet_transaction.class, singletonList(
-				new Pair<>("sym_wallet.sym_user_id", userId)
+				new Pair<>("sym_wallet.sym_user_id", systemUser.getUserId())
 		)).forEach(v -> walletTransactions.add(converterService.toDTO(v)));
 
 		var wallet = getEntityManagerRepo().findWhere(sym_wallet.class,
-				singletonList(new Pair<>("sym_user_id", userId))).get(0);
+				singletonList(new Pair<>("sym_user_id", systemUser.getUserId()))).get(0);
 
 		requestResponseLog.setResponse_code(fromEnum(SUCCESS))
 				.setOutgoing_response(walletTransactions.toString())

@@ -21,8 +21,8 @@ public class AuthenticationAPI {
 	public static SymResponseObject<SymSystemUser> validateAuth(String authToken) {
 
 		var user = new SymSystemUser(1L, 1L, 1L, 1L, "Tsungai", "Kaviya", "admin",
-			"tsungai.kaviya@gmail.com", "263785107830", null, "T3raTech Solutions", 0.0,
-			"SUPER_USER", null, null, new Date());
+			"tsungai.kaviya@gmail.com", "263785107830", "263785107830", "T3raTech Solutions", 0.0,
+			"SUPER_USER", null, authToken, new Date());
 
 		return new SymResponseObject<>(SUCCESS, user);
 	}

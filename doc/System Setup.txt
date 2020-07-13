@@ -76,6 +76,8 @@ On Windows:
     - In the file \sym_server\sym_persistence\src\main\resources\properties\database\application.properties there is a configuration to always create the database or only update columns
     - Setting hibernate.hbm2ddl.auto=update will only update the database if columns change
     - Setting hibernate.hbm2ddl.auto=create will ALWAYS delete and recreate the database when you restart the server
+    - Setting hibernate.hbm2ddl.auto=validate will validate the database but will not make any changes when you restart the server
+    - Setting hibernate.hbm2ddl.auto=none will not make any changes when you restart the server
 
 5. For the MTN integration to work, you must create a file that matches the location in the configuration in imports.sql:
     - mtn_gh_unique_id_file, for eg. on windows you can make that setting c:\mtnfile.txt and you must put a single line with the MTN unique id in it

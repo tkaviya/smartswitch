@@ -1,21 +1,20 @@
-package net.symbiosis.transaction.api.service;
+package net.symbiosis.notification.api.service;
 
-import net.symbiosis.common.contract.SymWalletList;
-import net.symbiosis.common.contract.SymWalletTransactionList;
-import net.symbiosis.common.contract.symbiosis.SymSystemUser;
+import net.symbiosis.common.contract.symbiosis.SymNotification;
+import net.symbiosis.notification.persistence.log.sym_notification;
+import org.modelmapper.ModelMapper;
 
 /***************************************************************************
  *                                                                         *
- * Created:     01 / 05 / 2020                                             *
+ * Created:     23 / 06 / 2020                                             *
  * Author:      Tsungai Kaviya                                             *
  * System:      IntelliJ 2019 / Windows 10                                 *
  * Contact:     tsungai.kaviya@gmail.com                                   *
  *                                                                         *
  ***************************************************************************/
 
-public interface TransactionRequestProcessor {
+public interface ConverterService {
+	ModelMapper getModelMapper();
 
-	SymWalletList getWallet(SymSystemUser systemUser, String channel);
-
-	SymWalletTransactionList getWalletHistory(SymSystemUser systemUser, String channel);
+	SymNotification toDTO(sym_notification notification);
 }

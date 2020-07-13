@@ -1,5 +1,6 @@
 package net.symbiosis.common.persistence.log;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +21,7 @@ import java.util.Date;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter @Setter
 @AttributeOverride(name = "id", column = @Column(name = "request_response_log_id"))
 public class sym_request_response_log extends sym_entity<sym_request_response_log> {
@@ -29,9 +31,9 @@ public class sym_request_response_log extends sym_entity<sym_request_response_lo
     @ManyToOne(optional = false)
     @JoinColumn(name = "event_type")
     private sym_event_type event_type;
-	@Column(nullable = false)
+	@Column
     private Long system_user_id;
-	@Column(nullable = false)
+	@Column
     private Long auth_user_id;
     @ManyToOne
     @JoinColumn(name = "response_code")
@@ -45,29 +47,14 @@ public class sym_request_response_log extends sym_entity<sym_request_response_lo
     @Column(length = 2048)
     private String outgoing_response;
 
-    public sym_request_response_log(sym_channel channel, sym_event_type event_type, String incoming_request) {
-        this.channel = channel;
-        this.event_type = event_type;
-        this.incoming_request = incoming_request;
-        this.incoming_request_time = new Date();
-    }
-
-    public sym_request_response_log(sym_channel channel, String incoming_request) {
-        this(channel, null, incoming_request);
-    }
-
-    public sym_request_response_log(sym_channel channel, sym_event_type event_type, Long system_user_id, Long auth_user_id,
-                                    sym_response_code response_code, Date incoming_request_time,
-                                    Date outgoing_response_time, String incoming_request, String outgoing_response) {
+    public sym_request_response_log(sym_channel channel, sym_event_type event_type, Long system_user_id,
+                                    Long auth_user_id, String incoming_request) {
         this.channel = channel;
         this.event_type = event_type;
         this.system_user_id = system_user_id;
         this.auth_user_id = auth_user_id;
-        this.response_code = response_code;
-        this.incoming_request_time = incoming_request_time;
-        this.outgoing_response_time = outgoing_response_time;
         this.incoming_request = incoming_request;
-        this.outgoing_response = outgoing_response;
+        this.incoming_request_time = new Date();
     }
 
     public sym_request_response_log setChannel_id(sym_channel channel) {

@@ -1,10 +1,11 @@
 package net.symbiosis.common.contract;
 
 import net.symbiosis.common.contract.base.DataContract;
+import net.symbiosis.common.contract.symbiosis.SymNotification;
 import net.symbiosis.core_lib.enumeration.SymResponseCode;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import java.io.Serializable;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import java.util.ArrayList;
 
 /***************************************************************************
@@ -14,9 +15,13 @@ import java.util.ArrayList;
  ***************************************************************************/
 
 @XmlRootElement
-public class SymList extends DataContract<SymList> implements Serializable {
+@XmlSeeAlso({
+    DataContract.class,
+    SymNotification.class
+})
+public class SymList<T> extends DataContract<SymList<T>> {
 
-    protected ArrayList responseData;
+    protected ArrayList<T> responseData;
 
     public SymList() {
     }
@@ -25,16 +30,16 @@ public class SymList extends DataContract<SymList> implements Serializable {
         this.symResponse = new SymResponse(symResponseCode);
     }
 
-    public SymList(SymResponseCode symResponseCode, ArrayList responseData) {
+    public SymList(SymResponseCode symResponseCode, ArrayList<T> responseData) {
         this.symResponse = new SymResponse(symResponseCode);
         this.responseData = responseData;
     }
 
-    public ArrayList getResponseData() {
+    public ArrayList<T> getResponseData() {
         return responseData;
     }
 
-    public void setResponseData(ArrayList responseData) {
+    public void setResponseData(ArrayList<T> responseData) {
         this.responseData = responseData;
     }
 }

@@ -27,6 +27,8 @@ import java.util.Date;
 public class sym_notification extends sym_entity<sym_notification> {
 
 	@Column(nullable = false)
+	private Long sym_user_id;
+	@Column(nullable = false)
 	private Long auth_user_id;
 	@Basic(optional = false)
 	private String recipient;
@@ -45,9 +47,10 @@ public class sym_notification extends sym_entity<sym_notification> {
 	@Basic
 	private String submit_response;
 
-	public sym_notification(Long auth_user_id, String recipient, sym_notification_type notification_type,
+	public sym_notification(Long sym_user_id, Long auth_user_id, String recipient, sym_notification_type notification_type,
 	                        String remote_reference, sym_notification_status notification_status,
 	                        Date notification_time, String notification, String submit_response) {
+		this.sym_user_id = sym_user_id;
 		this.auth_user_id = auth_user_id;
 		this.recipient = recipient;
 		this.notification_type = notification_type;
@@ -58,7 +61,12 @@ public class sym_notification extends sym_entity<sym_notification> {
 		this.submit_response = submit_response;
 	}
 
-	public sym_notification setAuth_user(Long auth_user) {
+	public sym_notification setSym_user_id(Long sym_user_id) {
+		this.sym_user_id = sym_user_id;
+		return this;
+	}
+
+	public sym_notification setAuth_user_id(Long auth_user_id) {
 		this.auth_user_id = auth_user_id;
 		return this;
 	}

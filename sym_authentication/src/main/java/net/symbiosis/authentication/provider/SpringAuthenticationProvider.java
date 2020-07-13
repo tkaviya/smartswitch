@@ -45,7 +45,8 @@ public class SpringAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
         sym_request_response_log request_response_log = new sym_request_response_log(
-                channel, fromEnum(USER_LOGIN), authentication.getDetails().toString()).save();
+            channel, fromEnum(USER_LOGIN), null, null,
+            authentication.getDetails().toString()).save();
 
         logger.info("Authenticating user " + authentication.getPrincipal() + " on to channel WEB");
 

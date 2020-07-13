@@ -181,6 +181,7 @@ insert ignore into sym_event_type(event_type_id,name,is_enabled) values (1400,'E
 insert ignore into sym_event_type(event_type_id,name,is_enabled) values (1401,'SMS_NOTIFICATION',1);
 insert ignore into sym_event_type(event_type_id,name,is_enabled) values (1402,'WHATSAPP_NOTIFICATION',1);
 insert ignore into sym_event_type(event_type_id,name,is_enabled) values (1403,'FACEBOOK_NOTIFICATION',1);
+insert ignore into sym_event_type(event_type_id,name,is_enabled) values (1410,'NOTIFICATION_HISTORY',1);
 
 insert ignore into sym_financial_institution_type(institution_type_id,name,is_enabled) values (1,'BANK',1);
 insert ignore into sym_financial_institution_type(institution_type_id,name,is_enabled) values (2,'MOBILE_WALLET',1);
@@ -453,8 +454,8 @@ insert ignore into sym_auth_group(auth_group_id, name, is_enabled) values (6, 'P
 insert ignore into sym_auth_group(auth_group_id, name, is_enabled) values (7, 'MOBILE_USER',1);
 insert ignore into sym_auth_group(auth_group_id, name, is_enabled) values (8, 'MOBILE_ADMIN',1);
 
-# insert ignore into sym_role(name, is_enabled) values ('ROLE_SMS_SEND', 1);
-# insert ignore into sym_role(name, is_enabled) values ('ROLE_EMAIL_SEND', 1);
+# insert ignore into sym_role(name, is_enabled) values ('ROLE_NOTIFICATION_SEND', 1);
+# insert ignore into sym_role(name, is_enabled) values ('ROLE_NOTIFICATION_HISTORY', 1);
 
 insert ignore into sym_role(name, is_enabled) values ('ROLE_WEB_MANAGE_EVD', 1);
 insert ignore into sym_role(name, is_enabled) values ('ROLE_WEB_MANAGE_STOCK', 1);

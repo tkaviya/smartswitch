@@ -12,6 +12,8 @@ import io.swagger.annotations.ApiOperation;
 import net.symbiosis.common.contract.SymResponse;
 import net.symbiosis.common.contract.SymWalletList;
 import net.symbiosis.common.contract.SymWalletTransactionList;
+import net.symbiosis.common.contract.api.AuthenticationAPI;
+import net.symbiosis.common.contract.symbiosis.SymSystemUser;
 import net.symbiosis.transaction.api.service.TransactionRequestProcessor;
 import net.symbiosis.transaction.api.service.TransactionRestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +37,16 @@ public class TransactionRestController implements TransactionRestService {
         this.transactionRequestProcessor = transactionRequestProcessor;
     }
 
+    private final SymSystemUser getAuthenticatedUser() {
+        return AuthenticationAPI.validateAuth(null).getResponseObject();
+    }
+
     @Override
     @ApiOperation(value = "Get wallet information for specified user ID", response = SymResponse.class)
     @GetMapping("/user/{userId}/wallet")
     public SymWalletList getWallet(@PathVariable("userId") Long userId, @RequestParam("channel") String channel) {
         logger.info(format("Got request to get wallet information for userId %s on channel %s", userId, channel));
-        return transactionRequestProcessor.getWallet(getRealParamValue(userId), getRealParamValue(channel));
+        return transactionRequestProcessor.getWallet(getAuthenticatedUser(), getRealParamValue(channel));
     }
 
     @Override
@@ -48,6 +54,6 @@ public class TransactionRestController implements TransactionRestService {
     @GetMapping("/user/{userId}/history")
     public SymWalletTransactionList getWalletHistory(@PathVariable("userId") Long userId, @RequestParam("channel") String channel) {
         logger.info(format("Got request to get transaction history for userId %s on channel %s", userId, channel));
-        return transactionRequestProcessor.getWalletHistory(getRealParamValue(userId), getRealParamValue(channel));
+        return transactionRequestProcessor.getWalletHistory(getAuthenticatedUser(), getRealParamValue(channel));
     }
 }

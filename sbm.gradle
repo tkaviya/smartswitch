@@ -150,6 +150,7 @@ project.ext.libraries = [
 		spring_security_aop:[ group: 'org.springframework', name: 'spring-security-aop',	version: project.spring_version ],
 		spring_security_tx: [ group: 'org.springframework', name: 'spring-security-tx',		version: project.spring_version ],
 		spring_orm:			[ group: 'org.springframework', name: 'spring-orm',				version: project.spring_version ],
+		spring_oxm:			[ group: 'org.springframework', name: 'spring-oxm',				version: project.spring_version ],
 		spring_tx:			[ group: 'org.springframework', name: 'spring-tx',				version: project.spring_version ],
 		spring_test:		[ group: 'org.springframework', name: 'spring-test',			version: project.spring_version ],
 		spring_expression:  [ group: 'org.springframework', name: 'spring-expression',		version: project.spring_version ],

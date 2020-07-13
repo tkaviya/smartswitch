@@ -1,34 +1,44 @@
-package net.symbiosis.notification.sms;
+package net.symbiosis.notification.api.impl;
 
 import com.nexmo.client.NexmoClient;
 import com.nexmo.client.sms.SmsSubmissionResponse;
 import com.nexmo.client.sms.SmsSubmissionResponseMessage;
 import com.nexmo.client.sms.messages.TextMessage;
 import net.symbiosis.common.configuration.ThreadPoolManager;
+import net.symbiosis.common.contract.SymList;
 import net.symbiosis.common.contract.SymResponse;
+import net.symbiosis.common.contract.symbiosis.SymNotification;
 import net.symbiosis.common.contract.symbiosis.SymSystemUser;
 import net.symbiosis.common.persistence.entity.enumeration.sym_distribution_channel;
 import net.symbiosis.common.persistence.log.sym_request_response_log;
 import net.symbiosis.core_lib.enumeration.SymDistributionChannel;
-import net.symbiosis.core_lib.enumeration.SymNotificationType;
 import net.symbiosis.core_lib.enumeration.SymResponseCode;
+import net.symbiosis.core_lib.structure.Pair;
 import net.symbiosis.notification.api.RequestProcessor;
+import net.symbiosis.notification.api.service.ConverterService;
 import net.symbiosis.notification.api.service.NotificationRequestProcessor;
 import net.symbiosis.notification.persistence.log.sym_notification;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Logger;
 
 import static com.nexmo.client.sms.MessageStatus.OK;
 import static java.lang.Integer.parseInt;
 import static java.lang.String.format;
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 import static net.symbiosis.common.persistence.dao.implementation.SymConfigDaoImpl.getConfig;
 import static net.symbiosis.common.persistence.helper.SymEnumHelper.fromEnum;
 import static net.symbiosis.common.utilities.ValidationHelper.validateChannel;
 import static net.symbiosis.core_lib.enumeration.DBConfigVars.*;
+import static net.symbiosis.core_lib.enumeration.SymChannel.fromString;
+import static net.symbiosis.core_lib.enumeration.SymEventType.NOTIFICATION_HISTORY;
 import static net.symbiosis.core_lib.enumeration.SymEventType.SMS_NOTIFICATION;
 import static net.symbiosis.core_lib.enumeration.SymNotificationStatus.*;
+import static net.symbiosis.core_lib.enumeration.SymNotificationType.SMS;
 import static net.symbiosis.core_lib.enumeration.SymResponseCode.*;
 import static net.symbiosis.core_lib.utilities.CommonUtilities.formatFullMsisdn;
 import static net.symbiosis.persistence.helper.DaoManager.getEntityManagerRepo;
@@ -46,8 +56,78 @@ import static net.symbiosis.persistence.helper.DaoManager.getEntityManagerRepo;
 public class NotificationRequestProcessorImpl implements NotificationRequestProcessor, RequestProcessor {
 
     private static final Logger logger = Logger.getLogger(NotificationRequestProcessorImpl.class.getSimpleName());
+	private final ConverterService converterService;
 
-    @Override
+	@Autowired
+	public NotificationRequestProcessorImpl(ConverterService converterService) {
+		this.converterService = converterService;
+	}
+
+	@Override
+	public SymList<SymNotification> getSMS(SymSystemUser systemUser, String channel, Long notificationId) {
+		logger.info(format("Getting SMS notification with ID %s for user %s from channel %s", notificationId,
+				systemUser.getUsername(), channel));
+
+		sym_request_response_log requestResponseLog = new sym_request_response_log(
+			fromEnum(fromString(channel)), fromEnum(NOTIFICATION_HISTORY), systemUser.getUserId(), systemUser.getAuthUserId(),
+			format("userId=%s|channel=%s|notificationId=%s|", systemUser.getUserId(), channel, notificationId)
+		).save();
+
+		var notification = getEntityManagerRepo().findById(sym_notification.class, notificationId);
+
+		if (notification == null || !notification.getNotification_type().equals(fromEnum(SMS))
+								 || !notification.getAuth_user_id().equals(systemUser.getAuthUserId())) {
+			logger.info(format("Could not find SMS notification with ID %s", notificationId));
+			requestResponseLog.setResponse_code(fromEnum(DATA_NOT_FOUND))
+				.setOutgoing_response(DATA_NOT_FOUND.getMessage())
+				.setOutgoing_response_time(new Date())
+				.save();
+			return new SymList<>(DATA_NOT_FOUND);
+		}
+
+		requestResponseLog.setResponse_code(fromEnum(SUCCESS))
+				.setOutgoing_response(notification.toString())
+				.setOutgoing_response_time(new Date())
+				.save();
+
+		logger.info(format("Returning SMS: %s", notification.toString()));
+		return new SymList<>(SUCCESS, new ArrayList<>(singletonList(converterService.toDTO(notification))));
+	}
+
+	@Override
+	public SymList<SymNotification> getSMSs(SymSystemUser systemUser, String channel, Long startId, Long endId) {
+		logger.info(format("Getting SMS notifications from ID %s to ID %s for user %s from channel %s", startId, endId,
+				systemUser.getUsername(), channel));
+
+		sym_request_response_log requestResponseLog = new sym_request_response_log(
+				fromEnum(fromString(channel)), fromEnum(NOTIFICATION_HISTORY), systemUser.getUserId(), systemUser.getAuthUserId(),
+				format("userId=%s|channel=%s|startId=%s|endId=%s|", systemUser.getUserId(), channel, startId, endId)
+		).save();
+
+		var notifications = getEntityManagerRepo().findWhere(sym_notification.class, asList(
+			new Pair<>("id >", startId),
+			new Pair<>("id <", endId),
+			new Pair<>("sym_user_id", systemUser.getUserId()),
+			new Pair<>("notification_type.name", SMS.name())
+		));
+
+		if (notifications == null) {
+			logger.info(format("Could not find SMS notifications from ID %s to ID %s for user %s from channel %s",
+					startId, endId, systemUser.getUsername(), channel));
+			requestResponseLog.setResponse_code(fromEnum(DATA_NOT_FOUND))
+					.setOutgoing_response(DATA_NOT_FOUND.getMessage())
+					.setOutgoing_response_time(new Date())
+					.save();
+			return new SymList<>(DATA_NOT_FOUND);
+		}
+
+		logger.info(format("Returning %s SMSs", notifications.size()));
+		ArrayList<SymNotification> smsNotification = new ArrayList<>();
+		notifications.forEach((n) -> smsNotification.add(converterService.toDTO(n)));
+		return new SymList<>(SUCCESS, smsNotification);
+	}
+
+	@Override
     public SymResponse sendSMS(SymSystemUser systemUser, String channel, String msisdn, String message) {
 
         logger.info(format("Got request to send SMS from %s:%s to %s. Message: \"%s\"", systemUser.getUsername(), channel, msisdn, message));
@@ -68,7 +148,8 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
             return new SymResponse(channelResponse.getResponseCode());
         }
 
-        var log = new sym_request_response_log(channelResponse.getResponseObject(), fromEnum(SMS_NOTIFICATION), incomingRequest);
+        var log = new sym_request_response_log(channelResponse.getResponseObject(), fromEnum(SMS_NOTIFICATION),
+		        systemUser.getUserId(), systemUser.getAuthUserId(), incomingRequest).save();
 
         //validate phone number
         final String phoneNumber = formatFullMsisdn(msisdn, getConfig(CONFIG_DEFAULT_COUNTRY_CODE));
@@ -88,8 +169,8 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
             return new SymResponse(INPUT_INVALID_REQUEST);
         }
 
-        sym_notification notification = new sym_notification(systemUser.getAuthUserId(), phoneNumber, fromEnum(SymNotificationType.SMS),
-            null, fromEnum(SENDING), new Date(), message, null
+        sym_notification notification = new sym_notification(systemUser.getUserId(), systemUser.getAuthUserId(),
+	        phoneNumber, fromEnum(SMS), null, fromEnum(SENDING), new Date(), message, null
         ).save();
 
         submitVonageSMS(notification, systemUser, log);
@@ -117,10 +198,11 @@ public class NotificationRequestProcessorImpl implements NotificationRequestProc
             return new SymResponse(channelResponse.getResponseCode());
         }
 
-        var log = new sym_request_response_log(channelResponse.getResponseObject(), fromEnum(SMS_NOTIFICATION), incomingRequest).save();
+        var log = new sym_request_response_log(channelResponse.getResponseObject(), fromEnum(SMS_NOTIFICATION),
+		        systemUser.getUserId(), systemUser.getAuthUserId(), incomingRequest).save();
 
         var notification = getEntityManagerRepo().findById(sym_notification.class, notificationId);
-        if (notification == null || !notification.getNotification_type().getName().equals(SymNotificationType.SMS.name())) {
+        if (notification == null || !notification.getNotification_type().getName().equals(SMS.name())) {
             String responseMessage = format("Resend SMS failed! %s", channelResponse.getMessage());
             logger.warning(responseMessage);
             return new SymResponse(channelResponse.getResponseCode());
