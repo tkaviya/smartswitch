@@ -27,8 +27,8 @@ public interface PrintableStringClass {
 //                    ex.printStackTrace();
 //                    return "";
 //                }
-                if (!field.isAccessible()) {
-//                if (!this.canAccess(field)) {
+//                if (!field.isAccessible()) {
+                if (!field.canAccess(field)) {
                     field.setAccessible(true);
                 }
                 Object fieldValue = field.get(this);
