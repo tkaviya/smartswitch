@@ -70,8 +70,8 @@ insert ignore into sym_config(config_id,is_enabled,config_name,config_value,conf
 #web settings
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (181,1,'default_reporting_days','7','Number of days to show in history by default');
 #pos settings
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (200,1,'falcon_pos_binary_name','ettl-falcon.jar','Name of the Falcon POS binary file');
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (201,1,'falcon_pos_binary_location','/var/www/html/ettl_pos/ettl-falcon.jar','Location of the Falcon POS binary file');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (200,1,'falcon_pos_binary_name','tt-falcon.jar','Name of the Falcon POS binary file');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (201,1,'falcon_pos_binary_location','/var/www/html/tt_pos/tt-falcon.jar','Location of the Falcon POS binary file');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (202,1,'falcon_pos_binary_version','1.0.4','Version of the Falcon POS binary file');
 #integration settings : GloSeamless
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (300,1,'glo_service_request_timeout','15000','Milliseconds before a request is considered timed out');

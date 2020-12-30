@@ -4,7 +4,7 @@ THIRD IP: 104.197.36.249
 FORTH IP: 104.198.224.120
 ---------------------------------
 
-http://test.t3ratech.com:8008/symbiosis/ETTLVision.apk
+http://test.t3ratech.com:8008/symbiosis/T3raTechVision.apk
 
 http://localhost:8080/sym_api-1.0.0/api/xml/session (POST)
 http://localhost:8080/sym_api-1.0.0/api/xml/session/{sessionId} (PUT)

@@ -45,10 +45,10 @@ Execute Shell:
 	export PATH="$PATH:$JAVA_HOME/bin:/opt/android-sdk/:/opt/android-sdk/tools/bin:/opt/android-sdk/platform-tools"
 
 	ionic cordova build android --no-interactive --confirm --aot --minifyjs --minifycss --optimizejs --verbose -- -- --minSdkVersion=19
-	cp /var/lib/jenkins/workspace/sym_mobile/platforms/android/app/build/outputs/apk/debug/app-debug.apk /var/www/html/symbiosis/ETTLVision.apk
+	cp /var/lib/jenkins/workspace/sym_mobile/platforms/android/app/build/outputs/apk/debug/app-debug.apk /var/www/html/symbiosis/T3raTechVision.apk
 
 	#ionic cordova build android --no-interactive --confirm --prod --aot --minifyjs --minifycss --optimizejs --release --verbose -- -- --minSdkVersion=19
-	#cp /var/lib/jenkins/workspace/sym_mobile/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk /var/www/html/symbiosis/ETTLVision.apk
+	#cp /var/lib/jenkins/workspace/sym_mobile/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk /var/www/html/symbiosis/T3raTechVision.apk
 	
 Email Notification
 	Recipients

@@ -1,7 +1,7 @@
 	Jarvis
 	This is the T3raTech Solutions Electronic Voucher Distribution Switch
 
-	GIT: https://github.com/t3ratech/jarvis/
+	GIT: https://github.com/t3ratech/smartswitch/
 
 	- GitHub hook trigger for GITScm polling
 	- Poll SCM
@@ -16,12 +16,12 @@ Invoke Gradle
 	
 Execute Shell:
 	echo "Copying Front End and API to Wildfly deployment folder"
-	cp /var/lib/jenkins/workspace/Jarvis/ettl_web_ui/build/libs/ettl_web_ui-1.0.0.war /opt/wildfly/standalone/deployments/admin.war
+	cp /var/lib/jenkins/workspace/Jarvis/tt_web_ui/build/libs/tt_web_ui-1.0.0.war /opt/wildfly/standalone/deployments/admin.war
 	cp /var/lib/jenkins/workspace/Jarvis/sym_api/build/libs/sym_api-1.0.0.war /opt/wildfly/standalone/deployments/api.war
 
 Execute Shell:
 	echo "Copying latest POS binary to download folder"
-	cp -R /var/lib/jenkins/workspace/Jarvis/ettl_pos/dist/ettl-falcon.jar /var/www/html/ettl_pos/
+	cp -R /var/lib/jenkins/workspace/Jarvis/tt_pos/dist/tt-falcon.jar /var/www/html/tt_pos/
 	
 Email Notification
 	Recipients

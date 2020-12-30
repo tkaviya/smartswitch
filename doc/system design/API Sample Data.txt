@@ -1,38 +1,38 @@
 104.197.36.249
 
 LOGIN API:
-	http://localhost:8080/sym_api-1.0.0/t3ratech/jarvis/xml/session (POST)
+	http://localhost:8080/sym_api-1.0.0/t3ratech/smartswitch/xml/session (POST)
 	deviceId=1234&username=tkaviya&password=testpass
 
 USER API:
-	http://localhost:8080/sym_api-1.0.0/t3ratech/jarvis/xml/user (POST)
+	http://localhost:8080/sym_api-1.0.0/t3ratech/smartswitch/xml/user (POST)
 	deviceId=1234&username=tich&email=bhpenetrator@gmail.com&msisdn=0123456789&firstName=tich&lastName=deBlak
 
-	http://localhost:8080/sym_api-1.0.0/t3ratech/jarvis/xml/user/2 (POST)
+	http://localhost:8080/sym_api-1.0.0/t3ratech/smartswitch/xml/user/2 (POST)
 	password=newpass&username=tich&deviceId=1234&authToken=1l0d58DI0V5Mkt2r
 	
-	http://localhost:8080/sym_api-1.0.0/t3ratech/jarvis/xml/user?username=tk (GET)
-	http://localhost:8080/sym_api-1.0.0/t3ratech/jarvis/xml/user?firstName=tsungai (GET)
-	http://localhost:8080/sym_api-1.0.0/t3ratech/jarvis/xml/user?lastName=kav (GET)
-	http://localhost:8080/sym_api-1.0.0/t3ratech/jarvis/xml/user?email=tsungai.kaviya@gmail.com (GET)
+	http://localhost:8080/sym_api-1.0.0/t3ratech/smartswitch/xml/user?username=tk (GET)
+	http://localhost:8080/sym_api-1.0.0/t3ratech/smartswitch/xml/user?firstName=tsungai (GET)
+	http://localhost:8080/sym_api-1.0.0/t3ratech/smartswitch/xml/user?lastName=kav (GET)
+	http://localhost:8080/sym_api-1.0.0/t3ratech/smartswitch/xml/user?email=tsungai.kaviya@gmail.com (GET)
 
 MERCHANT API:
 
-	http://localhost:8080/sym_api-1.0.0/t3ratech/jarvis/xml/ettl/merchant (POST)
+	http://localhost:8080/sym_api-1.0.0/t3ratech/smartswitch/xml/tt/merchant (POST)
 	voucherGroupId=1&firstName=tich&lastName=de%20blak&username=tich&email=bhpenetrator@gmail.com&msisdn=0123456789&deviceId=deviceId
 
-	http://localhost:8080/sym_api-1.0.0/t3ratech/jarvis/xml/ettl/merchant (POST)
+	http://localhost:8080/sym_api-1.0.0/t3ratech/smartswitch/xml/tt/merchant (POST)
 	voucherGroupId=2&accountAdminUserId=2
 	voucherGroupId=1&firstName=t3ratech&lastName=telecoms&username=t3ratech&email=t3ratech@gmail.com&msisdn=0111222333&deviceId=deviceId
 
-	http://localhost:8080/sym_api-1.0.0/t3ratech/jarvis/xml/ettl/merchant/1/payment (POST)
+	http://localhost:8080/sym_api-1.0.0/t3ratech/smartswitch/xml/tt/merchant/1/payment (POST)
 	amount, depositType, depositReference, paymentTime, bankReference, bankStatementId
 	
 PAYMENT API:
 
-	http://localhost:8080/sym_api-1.0.0/t3ratech/jarvis/xml/ettl/voucher/5/purchase
+	http://localhost:8080/sym_api-1.0.0/t3ratech/smartswitch/xml/tt/voucher/5/purchase
 	authUserId=1&systemUserId=1&merchantId=1
 
 VOUCHER IMPORT API:
 
-	http://localhost:8080/sym_api-1.0.0/t3ratech/jarvis/xml/ettl/voucherProvider/1/voucherImport (POST)
+	http://localhost:8080/sym_api-1.0.0/t3ratech/smartswitch/xml/tt/voucherProvider/1/voucherImport (POST)

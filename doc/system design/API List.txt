@@ -6,73 +6,73 @@ FIFTH IP: 104.197.63.210
 SIXTH IP: 104.197.45.14
 ---------------------------------
 
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/session (POST)
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/session/{sessionId} (PUT)
-http://www.t3ratech.com/api/t3ratech/jarvis/json/session (POST)
-http://www.t3ratech.com/api/t3ratech/jarvis/json/session/{sessionId} (PUT)
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/session (POST)
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/session/{sessionId} (PUT)
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/session (POST)
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/session/{sessionId} (PUT)
 
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/user (POST)
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/user/{userId} (PUT)
-http://www.t3ratech.com/api/t3ratech/jarvis/json/user (POST)
-http://www.t3ratech.com/api/t3ratech/jarvis/jsom/user/{userId} (PUT)
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/user (POST)
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/user/{userId} (PUT)
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/user (POST)
+http://www.t3ratech.com/api/t3ratech/smartswitch/jsom/user/{userId} (PUT)
 
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherGroup
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherGroup
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/voucherGroup
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/voucherGroup
 
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherGroupVoucher
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherGroupVoucher
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/voucherGroupVoucher
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/voucherGroupVoucher
 
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/merchant (POST)
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/merchant (GET)
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/merchant/{merchantId} (GET)
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/merchant/{merchantId}/payment (POST)
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/merchant (POST)
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/merchant (GET)
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/merchant/{merchantId} (GET)
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/merchant/{merchantId}/payment (POST)
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/merchant (POST)
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/merchant (GET)
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/merchant/{merchantId} (GET)
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/merchant/{merchantId}/payment (POST)
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/merchant (POST)
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/merchant (GET)
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/merchant/{merchantId} (GET)
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/merchant/{merchantId}/payment (POST)
 
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucher (GET)
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucher/{voucherId} (GET)
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucher (GET)
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucher/{voucherId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/voucher (GET)
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/voucher/{voucherId} (GET)
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/voucher (GET)
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/voucher/{voucherId}
 
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucher/{voucherId}/purchase {POST}
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucher/{voucherId}/purchase {POST}
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/voucher/{voucherId}/purchase {POST}
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/voucher/{voucherId}/purchase {POST}
 
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/responseCode
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/responseCode/{responseCodeId}
-http://www.t3ratech.com/api/t3ratech/jarvis/json/responseCode
-http://www.t3ratech.com/api/t3ratech/jarvis/json/responseCode/{responseCodeId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/responseCode
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/responseCode/{responseCodeId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/responseCode
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/responseCode/{responseCodeId}
 
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/systemConfig
-http://www.t3ratech.com/api/t3ratech/jarvis/json/systemConfig
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/systemConfig
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/systemConfig
 
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/language/{languageId}
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/channel/{channelId}
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/country/{countryId}
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/group/{groupId}
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/role/{roleId}
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/eventType/{eventTypeId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/language/{languageId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/channel/{channelId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/country/{countryId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/group/{groupId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/role/{roleId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/eventType/{eventTypeId}
 
-http://www.t3ratech.com/api/t3ratech/jarvis/json/language/{languageId}
-http://www.t3ratech.com/api/t3ratech/jarvis/json/channel/{channelId}
-http://www.t3ratech.com/api/t3ratech/jarvis/json/country/{countryId}
-http://www.t3ratech.com/api/t3ratech/jarvis/json/group/{groupId}
-http://www.t3ratech.com/api/t3ratech/jarvis/json/role/{groupId}
-http://www.t3ratech.com/api/t3ratech/jarvis/json/eventType/{eventTypeId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/language/{languageId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/channel/{channelId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/country/{countryId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/group/{groupId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/role/{groupId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/eventType/{eventTypeId}
 
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/serviceProvider/{serviceProviderId}
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/serviceProvider
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/serviceProvider/{serviceProviderId}
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/serviceProvider
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/serviceProvider/{serviceProviderId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/serviceProvider
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/serviceProvider/{serviceProviderId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/serviceProvider
 
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherProvider/{voucherProviderId}
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherProvider/{voucherProviderId}/payment (POST)
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherProvider
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherProvider/{voucherProviderId}/voucherImport (GET)
-http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherProvider/{voucherProviderId}/voucherImport (POST)
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherProvider/{voucherProviderId}
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherProvider/{voucherProviderId}/payment (POST)
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherProvider
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherProvider/{voucherProviderId}/voucherImport (POST)
-http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherProvider/{voucherProviderId}/voucherImport (POST
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/voucherProvider/{voucherProviderId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/voucherProvider/{voucherProviderId}/payment (POST)
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/voucherProvider
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/voucherProvider/{voucherProviderId}/voucherImport (GET)
+http://www.t3ratech.com/api/t3ratech/smartswitch/xml/tt/voucherProvider/{voucherProviderId}/voucherImport (POST)
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/voucherProvider/{voucherProviderId}
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/voucherProvider/{voucherProviderId}/payment (POST)
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/voucherProvider
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/voucherProvider/{voucherProviderId}/voucherImport (POST)
+http://www.t3ratech.com/api/t3ratech/smartswitch/json/tt/voucherProvider/{voucherProviderId}/voucherImport (POST
