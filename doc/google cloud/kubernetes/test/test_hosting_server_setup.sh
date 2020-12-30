@@ -71,4 +71,4 @@ nano /etc/profile
 -PATH="$JAVA_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android-sdk/:/opt/android-sdk/tools/bin:/opt/android-sdk/platform-tools"
 export PATH="$PATH:/opt/android-sdk/:/opt/android-sdk/tools/bin:/opt/android-sdk/platform-tools"
 
-keytool -genkey -v -keystore /root/application.keystore -alias ettl_vision -keyalg RSA -keysize 2048 -validity 10000
+keytool -genkey -v -keystore /root/application.keystore -alias tt_vision -keyalg RSA -keysize 2048 -validity 10000
