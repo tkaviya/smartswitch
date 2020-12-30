@@ -13,14 +13,14 @@
             <initiatorPrincipalId>
                <id>EMPOWER</id>
                <type>RESELLERUSER</type>
-               <userId>empowertst</userId>
+               <userId>t3ratechtst</userId>
             </initiatorPrincipalId>
-            <password>empowertst0419</password>
+            <password>t3ratechtst0419</password>
          </context>
          <senderPrincipalId>
             <id>EMPOWER</id>
             <type>RESELLERUSER</type>
-            <userId>empowertst</userId>
+            <userId>t3ratechtst</userId>
          </senderPrincipalId>
          <topupPrincipalId>
             <id>233230089518</id>                                            

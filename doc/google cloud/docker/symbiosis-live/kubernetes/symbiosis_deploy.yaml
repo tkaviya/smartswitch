@@ -17,8 +17,8 @@ spec:
         app: nginx-symbiosis-live
     spec:
       containers:
-        - name: github-empowerttl-symbiosis-docker-live-1
-          image: gcr.io/sage-ripple-146416/github_empowerttl_symbiosis-docker-live:4764119
+        - name: github-t3ratech-symbiosis-docker-live-1
+          image: gcr.io/sage-ripple-146416/github_t3ratech_symbiosis-docker-live:4764119
 ---
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler

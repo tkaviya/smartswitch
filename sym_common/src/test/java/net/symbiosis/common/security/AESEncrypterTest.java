@@ -28,9 +28,9 @@ public class AESEncrypterTest {
 	@Test
 	public void testDoAESECBMcryptCompatible1() {
 		try {
-			var data1 = "{\"function\":\"TransactionService\",\"SessionID\":\"430b9124-914d-4408-bfc9-407b22d0319a\",\"RequestUniqueID\":\"1000051\",\"ProductCode\":\"MTNMOMOCashout\",\"SystemServiceID\":\"64\",\"WalletData\":\"{\\\"Mobile Number\\\":\\\"0547965699\\\"}\",\"Amount\":\"100\",\"FromANI\": \"\",\"Email\":\"empowerttl@gmail.com\",\"MethodName\":\"TransactionService\"}";
-			var data2 = "{\"function\":\"TransactionService\",\"SessionID\":\"430b9124-914d-4408-bfc9-407b22d0319a\",\"RequestUniqueID\":\"1000052\",\"ProductCode\":\"MTNMOMOCashout\",\"SystemServiceID\":\"64\",\"WalletData\":\"{\\\"Mobile Number\\\":\\\"0547965699\\\"}\",\"Amount\":\"100\",\"FromANI\": \"\",\"Email\":\"empowerttl@gmail.com\",\"MethodName\":\"TransactionService\"}";
-			var data3 = "{\"function\":\"TransactionService\",\"SessionID\":\"480219b7-ea4b-4588-a033-23c9f2ebbc62\",\"RequestUniqueID\":\"1000052\",\"ProductCode\":\"MTNMOMOCashout\",\"SystemServiceID\":\"64\",\"WalletData\":\"{\\\"Mobile Number\\\":\\\"0547965699\\\"}\",\"Amount\":\"100\",\"FromANI\": \"\",\"Email\":\"empowerttl@gmail.com\",\"MethodName\":\"TransactionService\"}";
+			var data1 = "{\"function\":\"TransactionService\",\"SessionID\":\"430b9124-914d-4408-bfc9-407b22d0319a\",\"RequestUniqueID\":\"1000051\",\"ProductCode\":\"MTNMOMOCashout\",\"SystemServiceID\":\"64\",\"WalletData\":\"{\\\"Mobile Number\\\":\\\"0547965699\\\"}\",\"Amount\":\"100\",\"FromANI\": \"\",\"Email\":\"t3ratech@gmail.com\",\"MethodName\":\"TransactionService\"}";
+			var data2 = "{\"function\":\"TransactionService\",\"SessionID\":\"430b9124-914d-4408-bfc9-407b22d0319a\",\"RequestUniqueID\":\"1000052\",\"ProductCode\":\"MTNMOMOCashout\",\"SystemServiceID\":\"64\",\"WalletData\":\"{\\\"Mobile Number\\\":\\\"0547965699\\\"}\",\"Amount\":\"100\",\"FromANI\": \"\",\"Email\":\"t3ratech@gmail.com\",\"MethodName\":\"TransactionService\"}";
+			var data3 = "{\"function\":\"TransactionService\",\"SessionID\":\"480219b7-ea4b-4588-a033-23c9f2ebbc62\",\"RequestUniqueID\":\"1000052\",\"ProductCode\":\"MTNMOMOCashout\",\"SystemServiceID\":\"64\",\"WalletData\":\"{\\\"Mobile Number\\\":\\\"0547965699\\\"}\",\"Amount\":\"100\",\"FromANI\": \"\",\"Email\":\"t3ratech@gmail.com\",\"MethodName\":\"TransactionService\"}";
 			System.out.println("Initial data: " + data1);
 			System.out.println("Initial data: " + data2);
 			// encrypt

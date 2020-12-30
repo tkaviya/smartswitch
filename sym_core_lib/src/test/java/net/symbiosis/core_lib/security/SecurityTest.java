@@ -20,7 +20,7 @@ public class SecurityTest {
 
     private static final String encryptionKey = "F@8^d1&/e(!~1D-n";
     private static final String initializationVector = "BYb7_72D-b4#c9*c";
-    private static final String data = "empowertst0419";
+    private static final String data = "t3ratechtst0419";
 
     @Test
     public void testEncryptAES() throws Exception {

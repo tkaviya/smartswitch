@@ -39,8 +39,8 @@ public class SwaggerConfig {
 			"Symbiosis Authentication API",
 			"API for sending authentication",
 			"1.0.0",
-			"https://www.empowerttl.com/tos",
-			new Contact("Tsungai Kaviya", "https://www.empowerttl.com", "tkaviya@empowertelecoms.com"),
-			"License of API", "https://www.empowerttl.com/license", Collections.emptyList());
+			"https://www.t3ratech.com/tos",
+			new Contact("Tsungai Kaviya", "https://www.t3ratech.com", "tkaviya@t3ratech.com"),
+			"License of API", "https://www.t3ratech.com/license", Collections.emptyList());
 	}
 }

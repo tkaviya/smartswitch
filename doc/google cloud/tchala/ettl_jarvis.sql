@@ -271,7 +271,7 @@ CREATE TABLE `ettl_pos_machine` (
 
 LOCK TABLES `ettl_pos_machine` WRITE;
 /*!40000 ALTER TABLE `ettl_pos_machine` DISABLE KEYS */;
-INSERT INTO `ettl_pos_machine` VALUES (1,'home','359128041055936','359128046055931','9648041533615379','9648045518450382','demo',NULL,NULL,2),(2,'empower','359128041083821','359128046083826','9620010100331449','','fiademo',NULL,NULL,4);
+INSERT INTO `ettl_pos_machine` VALUES (1,'home','359128041055936','359128046055931','9648041533615379','9648045518450382','demo',NULL,NULL,2),(2,'t3ratech','359128041083821','359128046083826','9620010100331449','','fiademo',NULL,NULL,4);
 /*!40000 ALTER TABLE `ettl_pos_machine` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -684,7 +684,7 @@ CREATE TABLE `symbiosis_company` (
 
 LOCK TABLES `symbiosis_company` WRITE;
 /*!40000 ALTER TABLE `symbiosis_company` DISABLE KEYS */;
-INSERT INTO `symbiosis_company` VALUES (1,'Harare','4 Janeen Close','Groombridge, Mt. Pleasant','T3raTech','263785107830','27627938765',NULL,NULL,2),(2,'Accra','87, Spintex Road','Accra','Empower','','','','',1);
+INSERT INTO `symbiosis_company` VALUES (1,'Harare','4 Janeen Close','Groombridge, Mt. Pleasant','T3raTech','263785107830','27627938765',NULL,NULL,2),(2,'Accra','87, Spintex Road','Accra','T3raTech','','','','',1);
 /*!40000 ALTER TABLE `symbiosis_company` ENABLE KEYS */;
 UNLOCK TABLES;
 

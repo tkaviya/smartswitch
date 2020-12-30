@@ -8,8 +8,8 @@ TRUNCATE TABLE symbiosis_session;
 TRUNCATE TABLE symbiosis_request_response_log;
 
 TRUNCATE TABLE symbiosis_company;
-INSERT INTO `symbiosis_company` VALUES (1,'Harare','4 Janeen Close','Groombridge, Mt. Pleasant','T3raTech','263785107830','27627938765',NULL,NULL,2),(2,'Accra','87 Spintex road','Accra','Empower','','','','',1);
-INSERT INTO `symbiosis_company` VALUES (2,'Accra','87 Spintex road','Accra','Empower','','','','',1);
+INSERT INTO `symbiosis_company` VALUES (1,'Harare','4 Janeen Close','Groombridge, Mt. Pleasant','T3raTech','263785107830','27627938765',NULL,NULL,2),(2,'Accra','87 Spintex road','Accra','T3raTech','','','','',1);
+INSERT INTO `symbiosis_company` VALUES (2,'Accra','87 Spintex road','Accra','T3raTech','','','','',1);
 
 TRUNCATE TABLE symbiosis_wallet;
 INSERT INTO `symbiosis_wallet` VALUES (1,0.00,1,1,1),(2,0.00,2,2,1);

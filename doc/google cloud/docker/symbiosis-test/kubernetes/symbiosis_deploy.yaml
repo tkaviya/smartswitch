@@ -17,8 +17,8 @@ spec:
         app: nginx-symbiosis-test
     spec:
       containers:
-        - name: github-empowerttl-symbiosis-docker-test-1
-          image: gcr.io/sage-ripple-146416/github_empowerttl_symbiosis-docker-test:4345930
+        - name: github-t3ratech-symbiosis-docker-test-1
+          image: gcr.io/sage-ripple-146416/github_t3ratech_symbiosis-docker-test:4345930
           volumeMounts:
             - name: etc-default-storage
               mountPath: /etc/default/

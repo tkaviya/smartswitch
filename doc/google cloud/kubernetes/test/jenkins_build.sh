@@ -1,7 +1,7 @@
 	sym_server
-	This is the Empower Telecommunications and Technology Limited Wallet, Electronic Voucher Distribution & Transaction Switch
+	This is the T3raTech Solutions Wallet, Electronic Voucher Distribution & Transaction Switch
 
-	GIT: https://github.com/empowerttl/symbiosis/
+	GIT: https://github.com/t3ratech/symbiosis/
 
 	- GitHub hook trigger for GITScm polling
 	- Poll SCM
@@ -21,7 +21,7 @@ Execute Shell:
 	
 Email Notification
 	Recipients
-		empowerttl@gmail.com, tsungai.kaviya@gmail.com, fiademo.dogble@newdawntek.com, paulm@axilir.com
+		t3ratech@gmail.com, tsungai.kaviya@gmail.com, fiademo.dogble@newdawntek.com, paulm@axilir.com
 		
 		- Send e-mail for every unstable build	
  		- Send separate e-mails to individuals who broke the build
@@ -30,7 +30,7 @@ Email Notification
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	sym_mobile
-	This is the Empower Telecommunications and Technology Limited Wallet, Electronic Voucher Distribution & Transaction Switch Mobile Application
+	This is the T3raTech Solutions Wallet, Electronic Voucher Distribution & Transaction Switch Mobile Application
 
 	GIT: https://github.com/tkaviya/sym_mobile
 
@@ -52,7 +52,7 @@ Execute Shell:
 	
 Email Notification
 	Recipients
-		empowerttl@gmail.com, tsungai.kaviya@gmail.com, fiademo.dogble@newdawntek.com, paulm@axilir.com
+		t3ratech@gmail.com, tsungai.kaviya@gmail.com, fiademo.dogble@newdawntek.com, paulm@axilir.com
 		
 		- Send e-mail for every unstable build	
  		- Send separate e-mails to individuals who broke the build

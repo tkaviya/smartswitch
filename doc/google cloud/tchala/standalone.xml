@@ -43,7 +43,7 @@
 			<security-realm name="SSLRealm">
                 <server-identities>
                     <ssl>
-                        <keystore path="empowerttl.jks" relative-to="jboss.server.config.dir" keystore-password="empSSL1KEYpass@@" alias="*.empowerttl.com"/>
+                        <keystore path="t3ratech.jks" relative-to="jboss.server.config.dir" keystore-password="empSSL1KEYpass@@" alias="*.t3ratech.com"/>
                     </ssl>
                 </server-identities>
             </security-realm>

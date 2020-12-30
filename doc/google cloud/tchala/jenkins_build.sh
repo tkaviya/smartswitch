@@ -1,7 +1,7 @@
 	Jarvis
-	This is the Empower Telecommunications and Technology Limited Electronic Voucher Distribution Switch
+	This is the T3raTech Solutions Electronic Voucher Distribution Switch
 
-	GIT: https://github.com/empowerttl/jarvis/
+	GIT: https://github.com/t3ratech/jarvis/
 
 	- GitHub hook trigger for GITScm polling
 	- Poll SCM
@@ -25,7 +25,7 @@ Execute Shell:
 	
 Email Notification
 	Recipients
-		empowerttl@gmail.com, tsungai.kaviya@gmail.com, fiademo.dogble@newdawntek.com
+		t3ratech@gmail.com, tsungai.kaviya@gmail.com, fiademo.dogble@newdawntek.com
 		
 		- Send e-mail for every unstable build	
  		- Send separate e-mails to individuals who broke the build

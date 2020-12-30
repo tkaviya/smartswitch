@@ -11,7 +11,7 @@ On Windows:
 1. Install Java 11 JDK & Wildfly 19
 
     - Copy the 2 folders from \sym_server\doc\google cloud\tchala\ to \wildfly-19.0.0.Final\modules\system\layers\base\
-    - Copy the keystore file \sym_server\doc\Wildfly\empowerttl.jks into the Wildfly folder \wildfly-19.0.0.Final\standalone\configuration\
+    - Copy the keystore file \sym_server\doc\Wildfly\t3ratech.jks into the Wildfly folder \wildfly-19.0.0.Final\standalone\configuration\
     - You will need to point the Wildfly to your SSL keystore:
     - Firstly backup you existing configuration file: \wildfly-19.0.0.Final\standalone\configuration\standalone.xml
 
@@ -25,7 +25,7 @@ On Windows:
             <security-realm name="SSLRealm">
                 <server-identities>
                     <ssl>
-                        <keystore path="empowerttl.jks" relative-to="jboss.server.config.dir" keystore-password="empSSL1KEYpass@@" alias="*.empowerttl.com"/>
+                        <keystore path="t3ratech.jks" relative-to="jboss.server.config.dir" keystore-password="empSSL1KEYpass@@" alias="*.t3ratech.com"/>
                     </ssl>
                 </server-identities>
             </security-realm>

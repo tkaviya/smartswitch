@@ -1,7 +1,7 @@
 #system settings
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (1,1,'system_name','EmpowerPay','System Name');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (1,1,'system_name','SmartSwitch','System Name');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (2,1,'system_user_id','0','AuthUser ID for the system account');
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (3,1,'system_base_path','https://empowerttl.com/symbiosis','Base path of deployment');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (3,1,'system_base_path','https://t3ratech.com/symbiosis','Base path of deployment');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (4,1,'config_update_duration','1440','How often switch re-reads configs from the database');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (5,1,'thread_core_pool_size','20','Number of initial threads available');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (6,1,'thread_max_pool_size','50','Maximum number threads available');
@@ -29,13 +29,13 @@ insert ignore into sym_config(config_id,is_enabled,config_name,config_value,conf
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (52,1,'email_protocol','smtp','Email protocol');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (53,1,'email_host','localhost','SMTP host');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (54,1,'email_port','25','SMTP port');
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (55,1,'email_username','empowerttl','SMTP username');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (55,1,'email_username','t3ratech','SMTP username');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (56,1,'email_password','3mp0wER@dm1n','SMTP password');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (57,1,'email_smtp_auth','false','Authenticate on SMTP');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (58,1,'email_smtp_starttls_enable','false','Enable TLS Authentication');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (59,1,'email_smtp_debug','false','Show SMTP debug messages?');
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (60,1,'email_from','no-reply@empowertelecoms.com','Sender "from address" used for system emails');
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (61,1,'email_alert_to','tsungai@empowertelecoms.com','Where email is sent when there is a system alert');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (60,1,'email_from','no-reply@t3ratech.com','Sender "from address" used for system emails');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (61,1,'email_alert_to','tsungai@t3ratech.com','Where email is sent when there is a system alert');
 #localization settings
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (80,1,'default_country','Ghana','Default country for user registrations');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (81,1,'default_country_code','233','Default country code for phone numbers');
@@ -56,11 +56,11 @@ insert ignore into sym_config(config_id,is_enabled,config_name,config_value,conf
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (105,1,'default_smart_phone_auth_group','MOBILE_USER','Default auth group for mobile user registrations');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (106,1,'default_wallet_group','DEFAULT_WALLET_GROUP','Default wallet group for user registrations');
 #company settings
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (120,1,'domain_name','empowerttl.com','Domain name for where the system is hosted');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (120,1,'domain_name','t3ratech.com','Domain name for where the system is hosted');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (121,1,'contact_address','Plot 87, Spintex Road, Accra, Ghana','Company physical address');
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (122,1,'support_email','empowerttl@gmail.com','Company support email');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (122,1,'support_email','t3ratech@gmail.com','Company support email');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (123,1,'support_phone','+233242279182','Company support phone number');
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (124,1,'full_company_name','Empower Telecommunications and Technology Limited','Full company name');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (124,1,'full_company_name','T3raTech Solutions','Full company name');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (125,1,'copyright_year','2017','Company copyright year (shown at the bottom of emails)');
 #voucher settings
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (140,1,'default_voucher_expiry_days','365','Time before prepaid vouchers are considered expired');
@@ -76,7 +76,7 @@ insert ignore into sym_config(config_id,is_enabled,config_name,config_value,conf
 #integration settings : GloSeamless
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (300,1,'glo_service_request_timeout','15000','Milliseconds before a request is considered timed out');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (301,1,'glo_service_client_id','EMPOWER','Client Id for the Glo Integration');
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (302,1,'glo_service_user_id','empowertst','User Id for the Glo Integration');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (302,1,'glo_service_user_id','t3ratechtst','User Id for the Glo Integration');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (303,1,'glo_service_password','2suZ0Dcv5iTLOPbqOyOC0A==','Password for the Glo Integration');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (304,1,'glo_service_low_balance_threshold','100','Low threshold amount before the system sends warning email');
 #integration settings : MTN

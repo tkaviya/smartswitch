@@ -21,7 +21,7 @@ spec:
         app: nginx-symbiosis
     spec:
       containers:
-        - image: gcr.io/sage-ripple-146416/github.com/empowerttl/symbiosis
+        - image: gcr.io/sage-ripple-146416/github.com/t3ratech/symbiosis
           imagePullPolicy: IfNotPresent
           name: symbiosis-sha256-1
 ---

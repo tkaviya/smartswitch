@@ -2,7 +2,7 @@
 insert ignore into sym_company(company_id,company_name,address_line_1,address_line_2,address_city,address_country_id,phone1,phone2) values (0,'System','System','System','System',1,'0','0');
 update sym_company set company_id = 0 where company_name = 'System';
 alter table sym_company auto_increment = 1;
-insert ignore into sym_user(first_name,last_name,username,email,msisdn,msisdn2,salt,user_status_id,country_id,language_id,password,password_tries,pin,pin_tries) values ('System','System','system','empowerttl@gmail.com','0','0','system',30,2,1,'system',0,'system',0);
+insert ignore into sym_user(first_name,last_name,username,email,msisdn,msisdn2,salt,user_status_id,country_id,language_id,password,password_tries,pin,pin_tries) values ('System','System','system','t3ratech@gmail.com','0','0','system',30,2,1,'system',0,'system',0);
 update sym_user set sym_user_id = 0 where username = 'system';
 alter table sym_user auto_increment = 1;
 insert ignore into sym_auth_user (sym_user_id,channel_id,auth_group_id,device_id,registration_date,last_auth_date,last_login_date) SELECT su.sym_user_id,0,1,null,sysdate(),NULL,NULL FROM sym_user su WHERE su.username = 'system';

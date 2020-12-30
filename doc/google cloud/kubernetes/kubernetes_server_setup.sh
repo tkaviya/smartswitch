@@ -56,7 +56,7 @@ sed -i 's/html_directory =/#html_directory =/g' /etc/postfix/main.cf
 sed -i 's/sample_directory =/#sample_directory =/g' /etc/postfix/main.cf
 sed -i 's/newaliases_path =/#newaliases_path =/g' /etc/postfix/main.cf
 sed -i 's/readme_directory =/#readme_directory =/g' /etc/postfix/main.cf
-echo '[smtp.sendgrid.net]:2525 empowerttl:3mp0wER@dm1n' > /etc/postfix/sasl_passwd
+echo '[smtp.sendgrid.net]:2525 t3ratech:3mp0wER@dm1n' > /etc/postfix/sasl_passwd
 postmap /etc/postfix/sasl_passwd
 rm -rf /etc/postfix/sasl_passwd
 chmod 600 /etc/postfix/sasl_passwd.db
@@ -113,7 +113,7 @@ sed -i -e 's,<socket-binding name="https" port="${jboss.https.port:443}"/>,<sock
 cp -R /home/tkaviya/com/ /opt/wildfly/modules/system/layers/base/
 cp -R /home/tkaviya/org/ /opt/wildfly/modules/system/layers/base/
 chmod -R ug+wr /opt/wildfly/standalone/deployments/
-cp /home/tkaviya/empowerttl.jks /opt/wildfly/standalone/configuration/
+cp /home/tkaviya/t3ratech.jks /opt/wildfly/standalone/configuration/
 mkdir -p /opt/integration/mtn/
 
 # add jenkins to wildfly group for deployment
@@ -156,9 +156,9 @@ apt-get install -y apache2
 sed -i 's/KeepAlive On/KeepAlive Off/g' /etc/apache2/apache2.conf
 echo "TraceEnable off" >> /etc/apache2/apache2.conf
 #nano /etc/httpd/conf/sites-available/default-ssl.conf
-#-ServerAdmin admin@empowerttl.com
+#-ServerAdmin admin@t3ratech.com
 #nano /etc/apache2/sites-available/000-default.conf
-#-ServerAdmin admin@empowerttl.com
+#-ServerAdmin admin@t3ratech.com
 mkdir -p /var/www/html/symbiosis
 chown -R jenkins:jenkins /var/www/html/symbiosis
 #a2dismod mpm_event

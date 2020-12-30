@@ -6,73 +6,73 @@ FIFTH IP: 104.197.63.210
 SIXTH IP: 104.197.45.14
 ---------------------------------
 
-http://www.empowerttl.com/api/empower/jarvis/xml/session (POST)
-http://www.empowerttl.com/api/empower/jarvis/xml/session/{sessionId} (PUT)
-http://www.empowerttl.com/api/empower/jarvis/json/session (POST)
-http://www.empowerttl.com/api/empower/jarvis/json/session/{sessionId} (PUT)
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/session (POST)
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/session/{sessionId} (PUT)
+http://www.t3ratech.com/api/t3ratech/jarvis/json/session (POST)
+http://www.t3ratech.com/api/t3ratech/jarvis/json/session/{sessionId} (PUT)
 
-http://www.empowerttl.com/api/empower/jarvis/xml/user (POST)
-http://www.empowerttl.com/api/empower/jarvis/xml/user/{userId} (PUT)
-http://www.empowerttl.com/api/empower/jarvis/json/user (POST)
-http://www.empowerttl.com/api/empower/jarvis/jsom/user/{userId} (PUT)
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/user (POST)
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/user/{userId} (PUT)
+http://www.t3ratech.com/api/t3ratech/jarvis/json/user (POST)
+http://www.t3ratech.com/api/t3ratech/jarvis/jsom/user/{userId} (PUT)
 
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/voucherGroup
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/voucherGroup
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherGroup
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherGroup
 
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/voucherGroupVoucher
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/voucherGroupVoucher
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherGroupVoucher
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherGroupVoucher
 
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/merchant (POST)
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/merchant (GET)
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/merchant/{merchantId} (GET)
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/merchant/{merchantId}/payment (POST)
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/merchant (POST)
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/merchant (GET)
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/merchant/{merchantId} (GET)
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/merchant/{merchantId}/payment (POST)
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/merchant (POST)
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/merchant (GET)
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/merchant/{merchantId} (GET)
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/merchant/{merchantId}/payment (POST)
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/merchant (POST)
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/merchant (GET)
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/merchant/{merchantId} (GET)
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/merchant/{merchantId}/payment (POST)
 
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/voucher (GET)
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/voucher/{voucherId} (GET)
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/voucher (GET)
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/voucher/{voucherId}
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucher (GET)
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucher/{voucherId} (GET)
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucher (GET)
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucher/{voucherId}
 
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/voucher/{voucherId}/purchase {POST}
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/voucher/{voucherId}/purchase {POST}
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucher/{voucherId}/purchase {POST}
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucher/{voucherId}/purchase {POST}
 
-http://www.empowerttl.com/api/empower/jarvis/xml/responseCode
-http://www.empowerttl.com/api/empower/jarvis/xml/responseCode/{responseCodeId}
-http://www.empowerttl.com/api/empower/jarvis/json/responseCode
-http://www.empowerttl.com/api/empower/jarvis/json/responseCode/{responseCodeId}
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/responseCode
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/responseCode/{responseCodeId}
+http://www.t3ratech.com/api/t3ratech/jarvis/json/responseCode
+http://www.t3ratech.com/api/t3ratech/jarvis/json/responseCode/{responseCodeId}
 
-http://www.empowerttl.com/api/empower/jarvis/xml/systemConfig
-http://www.empowerttl.com/api/empower/jarvis/json/systemConfig
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/systemConfig
+http://www.t3ratech.com/api/t3ratech/jarvis/json/systemConfig
 
-http://www.empowerttl.com/api/empower/jarvis/xml/language/{languageId}
-http://www.empowerttl.com/api/empower/jarvis/xml/channel/{channelId}
-http://www.empowerttl.com/api/empower/jarvis/xml/country/{countryId}
-http://www.empowerttl.com/api/empower/jarvis/xml/group/{groupId}
-http://www.empowerttl.com/api/empower/jarvis/xml/role/{roleId}
-http://www.empowerttl.com/api/empower/jarvis/xml/eventType/{eventTypeId}
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/language/{languageId}
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/channel/{channelId}
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/country/{countryId}
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/group/{groupId}
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/role/{roleId}
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/eventType/{eventTypeId}
 
-http://www.empowerttl.com/api/empower/jarvis/json/language/{languageId}
-http://www.empowerttl.com/api/empower/jarvis/json/channel/{channelId}
-http://www.empowerttl.com/api/empower/jarvis/json/country/{countryId}
-http://www.empowerttl.com/api/empower/jarvis/json/group/{groupId}
-http://www.empowerttl.com/api/empower/jarvis/json/role/{groupId}
-http://www.empowerttl.com/api/empower/jarvis/json/eventType/{eventTypeId}
+http://www.t3ratech.com/api/t3ratech/jarvis/json/language/{languageId}
+http://www.t3ratech.com/api/t3ratech/jarvis/json/channel/{channelId}
+http://www.t3ratech.com/api/t3ratech/jarvis/json/country/{countryId}
+http://www.t3ratech.com/api/t3ratech/jarvis/json/group/{groupId}
+http://www.t3ratech.com/api/t3ratech/jarvis/json/role/{groupId}
+http://www.t3ratech.com/api/t3ratech/jarvis/json/eventType/{eventTypeId}
 
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/serviceProvider/{serviceProviderId}
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/serviceProvider
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/serviceProvider/{serviceProviderId}
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/serviceProvider
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/serviceProvider/{serviceProviderId}
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/serviceProvider
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/serviceProvider/{serviceProviderId}
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/serviceProvider
 
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/voucherProvider/{voucherProviderId}
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/voucherProvider/{voucherProviderId}/payment (POST)
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/voucherProvider
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/voucherProvider/{voucherProviderId}/voucherImport (GET)
-http://www.empowerttl.com/api/empower/jarvis/xml/ettl/voucherProvider/{voucherProviderId}/voucherImport (POST)
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/voucherProvider/{voucherProviderId}
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/voucherProvider/{voucherProviderId}/payment (POST)
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/voucherProvider
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/voucherProvider/{voucherProviderId}/voucherImport (POST)
-http://www.empowerttl.com/api/empower/jarvis/json/ettl/voucherProvider/{voucherProviderId}/voucherImport (POST
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherProvider/{voucherProviderId}
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherProvider/{voucherProviderId}/payment (POST)
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherProvider
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherProvider/{voucherProviderId}/voucherImport (GET)
+http://www.t3ratech.com/api/t3ratech/jarvis/xml/ettl/voucherProvider/{voucherProviderId}/voucherImport (POST)
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherProvider/{voucherProviderId}
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherProvider/{voucherProviderId}/payment (POST)
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherProvider
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherProvider/{voucherProviderId}/voucherImport (POST)
+http://www.t3ratech.com/api/t3ratech/jarvis/json/ettl/voucherProvider/{voucherProviderId}/voucherImport (POST
