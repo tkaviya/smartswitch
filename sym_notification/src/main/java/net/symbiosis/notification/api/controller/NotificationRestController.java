@@ -19,6 +19,8 @@ import net.symbiosis.core_lib.enumeration.SymChannel;
 import net.symbiosis.core_lib.response.SymResponseObject;
 import net.symbiosis.notification.api.service.NotificationRequestProcessor;
 import net.symbiosis.notification.api.service.NotificationRestService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,11 +34,16 @@ import static net.symbiosis.common.utilities.WebUtils.getRealParamValue;
 @CrossOrigin(origins = "*")
 public class NotificationRestController implements NotificationRestService {
 
+    private final DiscoveryClient discoveryClient;
+
     private static final Logger logger = Logger.getLogger(NotificationRestController.class.getSimpleName());
     private final NotificationRequestProcessor notificationRequestProcessor;
 
-    public NotificationRestController(NotificationRequestProcessor notificationRequestProcessor) {
+    @Autowired
+    public NotificationRestController(NotificationRequestProcessor notificationRequestProcessor,
+                                      DiscoveryClient discoveryClient) {
         this.notificationRequestProcessor = notificationRequestProcessor;
+        this.discoveryClient = discoveryClient;
     }
 
 //    @Override

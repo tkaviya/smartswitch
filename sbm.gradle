@@ -24,10 +24,11 @@
 */
 
 project.ext.spring_security_version					= '5.3.3.RELEASE'
-project.ext.spring_boot_version						= '2.3.1.RELEASE'
+project.ext.spring_boot_version						= '2.4.1'
+project.ext.spring_cloud_version					= '2020.0.0'
 project.ext.spring_data_version						= '2.1.10.RELEASE'
 project.ext.spring_version							= '5.2.7.RELEASE'
-project.ext.spring_dependancy_management_version	= '1.0.9.RELEASE'
+project.ext.spring_dependancy_management_version	= '1.0.10.RELEASE'
 
 project.ext.jersey2_version			= '2.29.1'
 
@@ -55,15 +56,10 @@ subprojects {
 		mavenLocal()
 		mavenCentral()
 		google()
-		maven {
-			url "https://jcenter.bintray.com"
-		}
-		maven {
-			url "http://repository.primefaces.org"
-		}
-		maven {
-			url "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/"
-		}
+		maven { url "https://jcenter.bintray.com" }
+		maven { url "http://repository.primefaces.org" }
+		maven { url "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/" }
+		maven { url 'https://repo.spring.io/milestone' }
 	}
 
 	buildscript {
@@ -73,9 +69,7 @@ subprojects {
 		repositories {
 			mavenLocal()
 			mavenCentral()
-			maven {
-				url "https://jcenter.bintray.com"
-			}
+			maven { url "https://jcenter.bintray.com" }
 		}
 		dependencies {
 			classpath(group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: project.spring_boot_version)
@@ -211,7 +205,7 @@ project.ext.libraries = [
 
 		/* ################################################ test jars ################################################# */
 		testng:			[ group: 'org.testng',              name: 'testng',				version: '6.9.6' ],
-		jmockit:		[ group: 'com.googlecode.jmockit',	name: 'jmockit',			version: '1.7' ],
+		jmockit:		[ group: 'org.jmockit',				name: 'jmockit',			version: '1.49' ],
 		junit:			[ group: 'junit',					name: 'junit-dep',			version: '4.11' ],
 		hamcrest_core:	[ group: 'org.hamcrest',			name: 'hamcrest-core',		version: project.hamcrest_version ],
 		hamcrest_lib:	[ group: 'org.hamcrest',			name: 'hamcrest-library',	version: project.hamcrest_version ],

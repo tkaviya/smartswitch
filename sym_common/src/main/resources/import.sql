@@ -42,8 +42,8 @@ insert ignore into sym_config(config_id,is_enabled,config_name,config_value,conf
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (82,1,'default_currency_symbol','GHS','Default currency for transactions');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (83,1,'default_language','English','Default language for user registrations');
 #integration settings : VonageNexmo
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (90,1,'vonage_api_key','361b5ca9','API Key for Vonage Nexmo');
-insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (91,1,'vonage_api_secret','FmSxQXZmIIvM1aWl','Password for Vonage SMS API');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (90,1,'vonage_api_key','test','API Key for Vonage Nexmo');
+insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (91,1,'vonage_api_secret','test','Password for Vonage SMS API');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) select  92,1,'vonage_sms_from',sc.config_value,'From name on SMS' from sym_config sc where sc.config_name = 'system_name';
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (93,1,'vonage_sms_max_retries','5','Number of times to retry when an SMS fails');
 insert ignore into sym_config(config_id,is_enabled,config_name,config_value,config_description) values (94,1,'vonage_sms_retry_wait_time','10000','Amount of time (in milliseconds) to wait between retries if SMS fails');
