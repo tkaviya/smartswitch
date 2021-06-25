@@ -24,14 +24,3 @@ subprojects {
     }
 }
 
-plugins {
-  id "org.sonarqube" version "3.3"
-}
-
-sonarqube {
-	properties {
-		property "sonar.projectKey", "tkaviya_smartswitch"
-		property "sonar.organization", "tkaviya"
-		property "sonar.host.url", "https://sonarcloud.io"
-	}
-}

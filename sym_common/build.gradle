@@ -1,4 +1,16 @@
+plugins {
+    id "org.sonarqube" version "3.3"
+}
+
 description = 'Symbiosis Common'
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "tkaviya_smartswitch"
+        property "sonar.organization", "tkaviya"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
+}
 
 jar { baseName = 'common' }
 apply plugin: 'idea'

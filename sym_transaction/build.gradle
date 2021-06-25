@@ -1,7 +1,16 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.1'
+	id 'org.springframework.boot' version '2.3.12.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id "org.sonarqube" version "3.3"
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectKey", "tkaviya_smartswitch"
+		property "sonar.organization", "tkaviya"
+		property "sonar.host.url", "https://sonarcloud.io"
+	}
 }
 
 description = 'Symbiosis Transaction'
