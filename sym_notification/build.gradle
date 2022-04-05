@@ -16,7 +16,7 @@ sonarqube {
 }
 
 
-jar { baseName = 'notification' }
+jar { archivesBaseName = 'notification' }
 
 apply plugin: 'war'
 apply plugin: 'idea'
@@ -44,13 +44,13 @@ dependencies {
 	compileOnly libraries.lombok
 	annotationProcessor libraries.lombok
 
-	compile project(':sym_core_lib')
-    compile project(':sym_persistence')
-    compile project(':sym_common')
+	implementation project(':sym_core_lib')
+	implementation project(':sym_persistence')
+	implementation project(':sym_common')
 
-    testCompile project(':sym_core_lib').sourceSets.test.output
-    testCompile project(':sym_persistence').sourceSets.test.output
-    testCompile project(':sym_common').sourceSets.test.output
+    testImplementation project(':sym_core_lib').sourceSets.test.output
+    testImplementation project(':sym_persistence').sourceSets.test.output
+    testImplementation project(':sym_common').sourceSets.test.output
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -67,19 +67,20 @@ dependencies {
 		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
 	}
 
-	compile 'org.springframework.boot:spring-boot-starter-actuator'
-	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-	compile 'org.springframework:spring-oxm'
-	compile 'javax.servlet:javax.servlet-api'
-	compile 'mysql:mysql-connector-java'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework:spring-oxm'
+	implementation 'javax.servlet:javax.servlet-api'
+	implementation 'mysql:mysql-connector-java'
 
-	compile libraries.swagger2
-	compile libraries.swagger_ui
-	compile libraries.nexmo
+	implementation libraries.swagger2
+	implementation libraries.swagger_ui
+	implementation libraries.nexmo
+	implementation libraries.modelmapper
 
-	testCompile libraries.testng
-	testCompile libraries.jmockit
-	testCompile libraries.spring_test
+	testImplementation libraries.testng
+	testImplementation libraries.jmockit
+	testImplementation libraries.spring_test
 	testCompileOnly libraries.lombok
 	testAnnotationProcessor libraries.lombok
 }

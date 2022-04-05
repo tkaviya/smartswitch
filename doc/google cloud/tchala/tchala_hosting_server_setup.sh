@@ -18,7 +18,7 @@ usermod -a -G sudo pmutyambizi
 
 # INSTALL GENERAL SERVER PROGRAMS
 
-dnf install -y bind-utils vsftpd mlocate nmap telnet bzip2 wget mlocate nmap telnet links unzip man git dbus systemd nano mysql-server npm java-11-openjdk-devel java-1.8.0-openjdk-devel postfix redhat-lsb nodejs-devel cyrus-sasl-plain
+dnf install -y bind-utils vsftpd mlocate nmap telnet bzip2 wget mlocate nmap telnet links unzip man git dbus systemd nano mysql-server npm java-17-openjdk-devel java-1.8.0-openjdk-devel postfix redhat-lsb nodejs-devel cyrus-sasl-plain
 
 yum distro-sync -y
 

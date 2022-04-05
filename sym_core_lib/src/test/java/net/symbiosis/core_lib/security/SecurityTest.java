@@ -1,5 +1,6 @@
 package net.symbiosis.core_lib.security;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static java.lang.String.format;
@@ -21,6 +22,21 @@ public class SecurityTest {
     private static final String encryptionKey = "F@8^d1&/e(!~1D-n";
     private static final String initializationVector = "BYb7_72D-b4#c9*c";
     private static final String data = "t3ratechtst0419";
+
+    @Test
+    public void testEncryptAndDecrypt() {
+        String unencryptedStr = "This is a plain text string";
+        EncryptDecryptString encryptor = new EncryptDecryptString();
+        String encryptedStr = encryptor.encryptWithCheck(unencryptedStr).getLeft();
+        Assert.assertNotNull(encryptedStr);
+        System.out.println("Encrypted String: " + encryptedStr);
+
+        EncryptDecryptString decryptor = new EncryptDecryptString();
+        String decryptedStr = decryptor.decryptWithCheck(encryptedStr).getLeft();
+        Assert.assertNotNull(decryptedStr);
+        Assert.assertEquals(decryptedStr, unencryptedStr);
+        System.out.println("Decrypted String: " + decryptedStr);
+    }
 
     @Test
     public void testEncryptAES() throws Exception {

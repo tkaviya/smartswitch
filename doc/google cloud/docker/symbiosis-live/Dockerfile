@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y wget mlocate nmap telnet links unzip unrar man gradle git dbus systemd nano \
-                       mlocate telnet dnsutils bzip2 binutils openjdk-11-jdk mysql-server sudo curl \
+                       mlocate telnet dnsutils bzip2 binutils openjdk-17-jdk mysql-server sudo curl \
                        openssh-server && \
     apt-get autoremove -y && \
     apt-get clean -y

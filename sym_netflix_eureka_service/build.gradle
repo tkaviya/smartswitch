@@ -15,7 +15,7 @@ sonarqube {
     }
 }
 
-jar { baseName = 'eureka' }
+jar { archivesBaseName = 'eureka' }
 
 apply plugin: 'war'
 apply plugin: 'idea'

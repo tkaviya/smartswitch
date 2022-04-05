@@ -16,7 +16,7 @@ apply from: 'sbm.gradle'
 
 subprojects {
 	apply plugin: 'java'
-	apply plugin: 'maven'
+	apply plugin: 'maven-publish'
     sourceCompatibility = 11
     targetCompatibility = 11
 

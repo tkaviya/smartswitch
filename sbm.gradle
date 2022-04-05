@@ -23,41 +23,66 @@
 	- If your project needs 1 of these variables, it means its DEFINITELY shared and should DEFINITELY be declared here
 */
 
-project.ext.spring_security_version					= '5.3.3.RELEASE'
-project.ext.spring_boot_version						= '2.4.1'
-project.ext.spring_cloud_version					= '2020.0.0'
+//project.ext.spring_security_version					= '5.3.3.RELEASE'
+//project.ext.spring_boot_version						= '2.4.1'
+//project.ext.spring_cloud_version					= '2020.0.0'
+//project.ext.spring_data_version						= '2.1.10.RELEASE'
+//project.ext.spring_version							= '5.2.7.RELEASE'
+//project.ext.spring_dependancy_management_version	= '1.0.10.RELEASE'
+//
+//project.ext.jersey2_version			= '2.29.1'
+//
+//project.ext.jackson_version			= '2.10.3'
+//
+//project.ext.axis2_version			= '1.7.9'
+//
+//project.ext.glassfish_hk2_version	= '2.5.0-b26'
+//project.ext.httpcomponents_version	= '4.3.5'
+//project.ext.hamcrest_version		= '1.3'
+//project.ext.hibernate_version		= '5.4.17.Final'
+//project.ext.slf4j_version			= '1.7.25'
+//project.ext.bouncycastle_version	= '1.62'
+//project.ext.swagger_version			= '2.9.2'
+////project.ext.swagger_version			= '2.4.0'
+
+project.ext.spring_security_version					= '5.3.10.RELEASE'
+project.ext.spring_boot_version						= "${springBootVersion}"
 project.ext.spring_data_version						= '2.1.10.RELEASE'
-project.ext.spring_version							= '5.2.7.RELEASE'
+project.ext.spring_version							= '5.2.15.RELEASE'
 project.ext.spring_dependancy_management_version	= '1.0.10.RELEASE'
+project.ext.spring_cloud_version					= '2020.0.3'
+project.ext.cobertura_version						= '2.2.7'
 
 project.ext.jersey2_version			= '2.29.1'
 
-project.ext.jackson_version			= '2.10.3'
+project.ext.jackson_version			= '2.12.4'
 
 project.ext.axis2_version			= '1.7.9'
 
 project.ext.glassfish_hk2_version	= '2.5.0-b26'
-project.ext.httpcomponents_version	= '4.3.5'
+project.ext.httpcomponents_version	= '4.5.13'
 project.ext.hamcrest_version		= '1.3'
-project.ext.hibernate_version		= '5.4.17.Final'
-project.ext.sl4j_version			= '1.7.25'
+//project.ext.hibernate_version		= '6.0.0.Final'
+//project.ext.hibernate_version		= '6.0.0.Alpha8'
+project.ext.hibernate_version		= '5.5.4.Final'
+//project.ext.hibernate_version		= '4.2.6.Final'
+project.ext.slf4j_version			= '1.7.25'
 project.ext.bouncycastle_version	= '1.62'
 project.ext.swagger_version			= '2.9.2'
-//project.ext.swagger_version			= '2.4.0'
 
 subprojects {
 
 	group = 'net.symbiosis'
 	version = '1.0.0'
 
-	apply plugin: 'maven'
+	apply plugin: 'maven-publish'
 
 	repositories {
 		mavenLocal()
 		mavenCentral()
 		google()
 		maven { url "https://jcenter.bintray.com" }
-		maven { url "http://repository.primefaces.org" }
+		maven { url "https://repository.primefaces.org" }
 		maven { url "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/" }
 		maven { url 'https://repo.spring.io/milestone' }
 	}
@@ -76,7 +101,7 @@ subprojects {
 		}
 	}
 
-	uploadArchives { repositories { mavenDeployer { mavenLocal() } } }
+	//uploadArchives { repositories { mavenDeployer { mavenLocal() } } }
 }
 
 tasks.withType(JavaCompile) {
@@ -122,7 +147,7 @@ project.ext.libraries = [
 		spring_data_jpa:	[ group: 'org.springframework.data',	name: 'spring-data-jpa',	version: project.spring_data_version ],
 
 		/* ################################################### lombok ################################################## */
-		lombok:				[ group: 'org.projectlombok',			name: 'lombok',				version: '1.18.12' ],
+		lombok:				[ group: 'org.projectlombok',			name: 'lombok',				version: '1.18.22' ],
 
 		/* ################################################### jasper ################################################## */
 		tomcat_jasper:		[ group: 'org.apache.tomcat.embed',		name: 'tomcat-embed-jasper' ],
@@ -232,10 +257,10 @@ project.ext.libraries = [
 		jpa_2_0_api: [ group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api',	version: '1.0.1.Final' ],
 
 		/* ################################################# logging ################################################## */
-		slf4j_api:			[ group: 'org.slf4j',	name: 'slf4j-api',			version: project.sl4j_version ],
-		slf4j_log4j12:	    [ group: 'org.slf4j',	name: 'slf4j-log4j12',	    version: project.sl4j_version ],
-		jcl_over_slf4j:		[ group: 'org.slf4j',	name: 'jcl-over-slf4j',		version: project.sl4j_version ],
-		log4j_over_slf4j:	[ group: 'org.slf4j',	name: 'log4j-over-slf4j',	version: project.sl4j_version ],
+		slf4j_api:			[ group: 'org.slf4j',	name: 'slf4j-api',			version: project.slf4j_version ],
+		slf4j_log4j12:	    [ group: 'org.slf4j',	name: 'slf4j-log4j12',	    version: project.slf4j_version ],
+		jcl_over_slf4j:		[ group: 'org.slf4j',	name: 'jcl-over-slf4j',		version: project.slf4j_version ],
+		log4j_over_slf4j:	[ group: 'org.slf4j',	name: 'log4j-over-slf4j',	version: project.slf4j_version ],
 		log4j:	            [ group: 'log4j',	    name: 'log4j',	            version: '1.2.17' ],
 
 		/* ################################################### JSF #################################################### */
@@ -321,6 +346,62 @@ project.ext.libraries = [
 
         /* ############################################# MitreId jars ############################################# */
 		mitre_id:			[ group: 'org.mitre',				name: 'openid-connect-client',	version: '1.3.3' ],
+
+
+
+
+
+
+		/* ############################################### betwixt ############################################### */
+		commons_betwixt:	[ group: 'commons-betwixt',					name: 'commons-betwixt',	version: '0.8' ],
+		servicemix:			[ group: 'org.apache.servicemix.bundles',	name: 'org.apache.servicemix.bundles.castor',	version: '1.4.1_2' ],
+		dbunit:				[ group: 'org.dbunit',						name: 'dbunit',	version: '2.7.0' ],
+		hazelcast:			[ group: 'com.hazelcast',			name: 'hazelcast',		version: '4.2.1' ],
+		hazelcast_all:		[ group: 'com.hazelcast',			name: 'hazelcast-all',	version: '4.2.1' ],
+		reflections:	[ group: 'org.reflections', 			name: 'reflections',	version: '0.9.12' ],
+		jcommon:		[ group: 'org.jfree', 					name: 'jcommon',	version: '1.0.24' ],
+		saaj:			[ group: 'com.sun.xml.messaging.saaj',					name: 'saaj-impl',	version: '1.3.5' ],
+		scribe:			[ group: 'org.scribe',					name: 'scribe',	version: '1.3.7' ],
+		json_simple:	[ group: 'com.googlecode.json-simple',	name: 'json-simple',	version: '1.1.1' ],
+		ssov2:			[ group: 'com.mulesoft.connectors',		name: 'mule-netsuite-connector',	version: '11.2.4' ],
+		opencsv:		[ group: 'au.com.bytecode',					name: 'opencsv',	version: '2.4' ],
+		freemarker:		[ group: 'org.freemarker',					name: 'freemarker',	version: '2.3.31' ],
+		plexus_utils:	[ group: 'org.codehaus.plexus',				name: 'plexus-utils',	version: '3.3.0' ],
+		quartz:			[ group: 'org.quartz-scheduler',			name: 'quartz',			version: '2.3.2' ],
+		cron_parser:	[ group: 'net.redhogs.cronparser',			name: 'cron-parser',	version: '2.4' ],
+		barcode4j:	[ group: 'net.sf.barcode4j',			name: 'barcode4j',	version: '2.1' ],
+		eclipselink:	[ group: 'org.eclipse.persistence',		name: 'eclipselink',	version: '3.0.1' ],
+		httpunit:	[ group: 'com.meteware.httpunit',		name: 'httpunit',	version: '1.5.4-atlassian-15-00353c6' ],
+		javahg:		[ group: 'com.aragost.javahg',		name: 'javahg',	version: '0.4' ],
+		commons_lang3:		[ group: 'org.apache.commons',		name: 'commons-lang3',			version: '3.12.0' ],
+		commons_math:		[ group: 'org.apache.commons',		name: 'commons-math',			version: '2.1' ],
+		commons_io:			[ group: 'commons-io',				name: 'commons-io',				version: '2.10.0' ],
+		commons_validator:	[ group: 'commons-validator',		name: 'commons-validator',		version: '1.7' ],
+		commons_dbcp2:		[ group: 'org.apache.commons',		name: 'commons-dbcp2',			version: '2.8.0' ],
+		serializer:			[ group: 'org.apache.xml',			name: 'serializer',				version: '2.7.1-v201005080400' ],
+		commons_cli:		[ group: 'commons-cli',				name: 'commons-cli',			version: '1.4' ],
+		jsch:				[ group: 'com.jcraft',				name: 'jsch',	version: '0.1.55' ],
+		commons_beanutils:	[ group: 'commons-beanutils',		name: 'commons-beanutils',		version: '1.9.4' ],
+		commons_fileupload:	[ group: 'commons-fileupload',		name: 'commons-fileupload',		version: '1.2' ],
+		javax_servlet:		[ group: 'javax.servlet',			name: 'servlet-api',		version: '2.5' ],
+		javax_persistence_api:	[ group: 'javax.persistence',	name: 'javax.persistence-api',	version: '2.2' ],
+		jackson_databind:	[ group: 'com.fasterxml.jackson.core',		name: 'jackson-databind',		version: project.jackson_version ],
+		pdfbox:          	[ group: 'org.apache.pdfbox',		name: 'pdfbox',			version: '2.0.24' ],
+		commons_httpclient:	[ group: 'commons-httpclient',		name: 'commons-httpclient',		version: '3.1' ],
+		javax_servlet_jsp_api:	[ group: 'javax.servlet',	name: 'jsp-api',				version: '2.0' ],
+		jaxws_api:   		[ group: 'javax.xml.ws',    name: 'jaxws-api',     version: '2.1' ],
+		jws_api:   		[ group: 'javax.jws',    name: 'javax.jws-api',     version: '1.1' ],
+
+
+
+
+
+
+
+
+
+
+
 
 		/* ############################################# commonly used jars ############################################# */
 		commons_discovery:	[ group: 'commons-discovery',		name: 'commons-discovery',		version: '0.5' ],

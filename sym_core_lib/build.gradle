@@ -12,10 +12,10 @@ sonarqube {
     }
 }
 
-jar { baseName = 'core_lib' }
+jar { archivesBaseName = 'core_lib' }
 
 dependencies {
-    compile libraries.commons_codec
-    compile libraries.bcpg
-    testCompile libraries.testng
+    implementation libraries.commons_codec
+    implementation libraries.bcpg
+    testImplementation libraries.testng
 }

@@ -12,7 +12,7 @@ sonarqube {
     }
 }
 
-jar { baseName = 'common' }
+jar { archivesBaseName = 'common' }
 apply plugin: 'idea'
 
 configurations {
@@ -34,33 +34,33 @@ dependencies {
 
     provided project(':sym_core_lib')
     provided project(':sym_persistence')
-    compile libraries.modelmapper
-    compile libraries.gson
-    compile libraries.json
-    compile libraries.javax_mail
-    compile libraries.jmimemagic
-    compile libraries.bcpg
-    compile libraries.bcprov
+    implementation libraries.modelmapper
+    implementation libraries.gson
+    implementation libraries.json
+    implementation libraries.javax_mail
+    implementation libraries.jmimemagic
+    implementation libraries.bcpg
+    implementation libraries.bcprov
 
     provided libraries.hibernate_core
     provided libraries.hibernate_validator
     provided libraries.hibernate_entitymanager
 
-    compile libraries.mysql_connector
-    compile libraries.spring_context
-    compile libraries.spring_orm
-    compile libraries.spring_data_jpa
-    compile libraries.commons_logging
-//    compile libraries.hibernate_c3p0
-//    compile libraries.c3p0
-    compile libraries.hibernate_ehcache
-    compile libraries.ehcache
+    implementation libraries.mysql_connector
+    implementation libraries.spring_context
+    implementation libraries.spring_orm
+    implementation libraries.spring_data_jpa
+    implementation libraries.commons_logging
+//    implementation libraries.hibernate_c3p0
+//    implementation libraries.c3p0
+    implementation libraries.hibernate_ehcache
+    implementation libraries.ehcache
     
-    testCompile libraries.bcpg
-    testCompile libraries.bcprov
-    testCompile libraries.testng
-    testCompile libraries.jmockit
-    testCompile libraries.spring_test
+    testImplementation libraries.bcpg
+    testImplementation libraries.bcprov
+    testImplementation libraries.testng
+    testImplementation libraries.jmockit
+    testImplementation libraries.spring_test
     testCompileOnly libraries.lombok
     testAnnotationProcessor libraries.lombok
 }

@@ -15,7 +15,7 @@ sonarqube {
     }
 }
 
-jar { baseName = 'authentication' }
+jar { archivesBaseName = 'authentication' }
 
 apply plugin: 'war'
 apply plugin: 'idea'
@@ -42,14 +42,14 @@ dependencies {
 
     compileOnly libraries.lombok
     annotationProcessor libraries.lombok
-    
-    compile project(':sym_core_lib')
-    compile project(':sym_persistence')
-    compile project(':sym_common')
 
-    testCompile project(':sym_core_lib').sourceSets.test.output
-    testCompile project(':sym_persistence').sourceSets.test.output
-    testCompile project(':sym_common').sourceSets.test.output
+    implementation project(':sym_core_lib')
+    implementation project(':sym_persistence')
+    implementation project(':sym_common')
+
+    testImplementation project(':sym_core_lib').sourceSets.test.output
+    testImplementation project(':sym_persistence').sourceSets.test.output
+    testImplementation project(':sym_common').sourceSets.test.output
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -62,24 +62,25 @@ dependencies {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
 
-    compile 'org.springframework.boot:spring-boot-starter-actuator'
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 //    compile 'org.springframework.boot:spring-boot-starter-aop'
 //    compile 'org.springframework.boot:spring-boot-starter-hateoas'
 //    compile 'org.springframework.boot:spring-boot-starter-data-rest'
 //    compile 'org.springframework.boot:spring-boot-starter-oauth2-client'
-    compile 'javax.servlet:javax.servlet-api'
-    compile 'mysql:mysql-connector-java'
+    implementation 'javax.servlet:javax.servlet-api'
+    implementation 'mysql:mysql-connector-java'
 
-    compile libraries.jjwt
-    compile libraries.swagger2
-    compile libraries.swagger_ui
-//    compile libraries.google_api_client
-//    compile libraries.mitre_id
+    implementation libraries.jjwt
+    implementation libraries.modelmapper
+    implementation libraries.swagger2
+    implementation libraries.swagger_ui
+//    implementation libraries.google_api_client
+//    implementation libraries.mitre_id
 
-    testCompile libraries.testng
-    testCompile libraries.jmockit
-    testCompile libraries.spring_test
+    testImplementation libraries.testng
+    testImplementation libraries.jmockit
+    testImplementation libraries.spring_test
     testCompileOnly libraries.lombok
     testAnnotationProcessor libraries.lombok
 
